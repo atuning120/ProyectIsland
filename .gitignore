@@ -1,0 +1,62 @@
+# ------------------------------------------------------------------------------
+# Archivo .gitignore para Proyectos de Unity
+# Este archivo asegura que Git ignore los archivos de caché, temporales y de la
+# biblioteca generados automáticamente por Unity.
+# ------------------------------------------------------------------------------
+
+# DIRECTORIOS GENERADOS POR UNITY (DEBEN IGNORARSE)
+# La carpeta Library contiene datos de caché que no deben subirse.
+[Ll]ibrary/
+# Archivos de caché temporales.
+[Tt]emp/
+# Archivos de caché para scripts y compilación.
+[Oo]bj/
+# Carpeta de logs de Unity.
+[Ll]ogs/
+# Carpeta de caché para la versión más reciente del Editor.
+[Ss]napshots/
+# Carpeta donde se guardan las compilaciones del juego.
+[Bb]uild/
+[Bb]uilds/
+
+# ARCHIVOS DE CONFIGURACIÓN Y SOLUCIÓN DE VISUAL STUDIO/RIDER
+# Archivos de proyecto generados por el IDE.
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+
+# ARCHIVOS DE PLATAFORMA Y COMPILACIÓN
+# Builds de Android (APK, AAB) y otros.
+*.apk
+*.aab
+# Paquetes de Asset Store.
+*.unitypackage
+# Archivos específicos de macOS que deben ignorarse.
+.DS_Store
+
+# ARCHIVOS DE BACKUP Y OTROS
+# Archivos de backup o archivos temporales.
+*.bak
+*.orig
+*.meta.orig
+*.meta.rej
+
+# EXCLUSIONES DE PAQUETES (UPM)
+# Ignorar el caché completo de los paquetes si usas un sistema de paquetes moderno.
+# Si estás compartiendo un proyecto, querrás mantener manifest.json y packages-lock.json.
+# Si tu error anterior ocurrió debido a archivos grandes en esta ruta, es crucial ignorar la carpeta PackageCache.
+[Pp]ackages/[Pp]ackage[Cc]ache/
+
+# CONFIGURACIÓN DE VS CODE
+.vscode/
+# CONFIGURACIÓN DE RIDER
+.idea/
+
+# ------------------------------------------------------------------------------
+# EXCLUSIONES ESPECÍFICAS DE ASSETS (Opcional, si aplicas compresión)
+# Assets/AssetStoreTools/
