@@ -32,8 +32,6 @@
 
 # ARCHIVOS DE PLATAFORMA Y COMPILACIÓN
 # Builds de Android (APK, AAB) y otros.
-*.apk
-*.aab
 # Paquetes de Asset Store.
 *.unitypackage
 # Archivos específicos de macOS que deben ignorarse.
