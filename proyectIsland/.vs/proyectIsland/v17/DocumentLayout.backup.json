@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|c:\\users\\adan\\documents\\github\\proyectisland\\proyectisland\\assets\\scripts\\uiconter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\uiconter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|c:\\users\\adan\\documents\\github\\proyectisland\\proyectisland\\assets\\scripts\\checklistmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\checklistmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -35,32 +31,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UIConter.cs",
-              "DocumentMoniker": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\Assets\\Scripts\\UIConter.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\UIConter.cs",
-              "ToolTip": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\Assets\\Scripts\\UIConter.cs",
-              "RelativeToolTip": "Assets\\Scripts\\UIConter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-06T19:42:18.434Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "ChecklistManager.cs",
               "DocumentMoniker": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\Assets\\Scripts\\ChecklistManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\ChecklistManager.cs",
               "ToolTip": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\Assets\\Scripts\\ChecklistManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\ChecklistManager.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAmwDsAAABlAAAAAAAAAA==",
+              "ViewState": "AgIAADIAAAAAAAAAAAAmwFgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-06T18:51:33.942Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "VRPhotoCamera.cs",
               "DocumentMoniker": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\Assets\\Scripts\\VRPhotoCamera.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\VRPhotoCamera.cs",
@@ -72,7 +55,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "PhotographableObject.cs",
               "DocumentMoniker": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\Assets\\Scripts\\PhotographableObject.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PhotographableObject.cs",
@@ -84,7 +67,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "BK_Water.shader",
               "DocumentMoniker": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\Assets\\BK\\Pure_Common\\Shaders\\BK_Water.shader",
               "RelativeDocumentMoniker": "Assets\\BK\\Pure_Common\\Shaders\\BK_Water.shader",
