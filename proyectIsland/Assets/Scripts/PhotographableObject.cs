@@ -6,16 +6,23 @@ public class PhotographableObject : MonoBehaviour
     public string objectName = "Tigre"; // Nombre para mostrar en el checklist
     public bool isPhotographed = false;
 
-    // Esta funciÛn ser· llamada por la c·mara cuando se tome la foto
+    // Esta funci√≥n ser√° llamada por la c√°mara cuando se tome la foto
     public void OnPhotograph()
     {
         if (!isPhotographed)
         {
             isPhotographed = true;
-            Debug.Log("°Has fotografiado a: " + objectName + "!");
+            Debug.Log("¬°Has fotografiado a: " + objectName + "!");
 
-            // AquÌ notificamos al gestor del checklist
+            // Aqu√≠ notificamos al gestor del checklist
             ChecklistManager.Instance.MarkAsPhotographed(objectName);
         }
+    }
+
+    // NUEVO: M√©todo para resetear el estado del objeto
+    public void ResetPhotographState()
+    {
+        isPhotographed = false;
+        Debug.Log(objectName + " ha sido reseteado y ya no est√° fotografiado.");
     }
 }

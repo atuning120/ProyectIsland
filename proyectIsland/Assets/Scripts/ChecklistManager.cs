@@ -5,23 +5,23 @@ using UnityEngine.Events; // NUEVO: Necesario para usar UnityEvent
 
 public class ChecklistManager : MonoBehaviour
 {
-    // Singleton: Un patrón para tener una única instancia de este gestor
+    // Singleton: Un patrï¿½n para tener una ï¿½nica instancia de este gestor
     public static ChecklistManager Instance { get; private set; }
 
     // Usamos un diccionario para llevar la cuenta de los objetos por su nombre
     public Dictionary<string, bool> photoChecklist = new Dictionary<string, bool>();
 
-    // NUEVO: Variable para llevar la cuenta de cuántos objetos se han fotografiado.
+    // NUEVO: Variable para llevar la cuenta de cuï¿½ntos objetos se han fotografiado.
     // El "private set" significa que solo este script puede cambiar su valor, pero otros pueden leerlo.
     public int photographedCount { get; private set; } = 0;
 
-    // NUEVO: Un evento que se disparará cada vez que el contador cambie.
-    // La UI se "suscribirá" a este evento para saber cuándo debe actualizarse.
+    // NUEVO: Un evento que se dispararï¿½ cada vez que el contador cambie.
+    // La UI se "suscribirï¿½" a este evento para saber cuï¿½ndo debe actualizarse.
     public UnityEvent<int> OnPhotoCountChanged;
 
     private void Awake()
     {
-        // Lógica del Singleton
+        // Lï¿½gica del Singleton
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -31,7 +31,7 @@ public class ChecklistManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject); // Opcional: para que no se destruya al cambiar de escena
 
-            // NUEVO: Es buena práctica inicializar el evento aquí.
+            // NUEVO: Es buena prï¿½ctica inicializar el evento aquï¿½.
             if (OnPhotoCountChanged == null)
                 OnPhotoCountChanged = new UnityEvent<int>();
         }
@@ -39,7 +39,7 @@ public class ChecklistManager : MonoBehaviour
         InitializeChecklist();
     }
 
-    // Busca todos los objetos fotografiables en la escena y los añade a la lista
+    // Busca todos los objetos fotografiables en la escena y los aï¿½ade a la lista
     void InitializeChecklist()
     {
         PhotographableObject[] allObjects = FindObjectsOfType<PhotographableObject>();
@@ -53,11 +53,11 @@ public class ChecklistManager : MonoBehaviour
         PrintChecklistStatus();
     }
 
-    // Método público para que otros scripts actualicen el checklist
+    // Mï¿½todo pï¿½blico para que otros scripts actualicen el checklist
     public void MarkAsPhotographed(string objectName)
     {
-        // NUEVO: Hemos añadido "&& !photoChecklist[objectName]" para asegurarnos de que solo contamos
-        // un objeto la PRIMERA vez que se fotografía, evitando errores si se le toma foto dos veces.
+        // NUEVO: Hemos aï¿½adido "&& !photoChecklist[objectName]" para asegurarnos de que solo contamos
+        // un objeto la PRIMERA vez que se fotografï¿½a, evitando errores si se le toma foto dos veces.
         if (photoChecklist.ContainsKey(objectName) && !photoChecklist[objectName])
         {
             photoChecklist[objectName] = true;
@@ -68,18 +68,45 @@ public class ChecklistManager : MonoBehaviour
             Debug.Log(objectName + " marcado como fotografiado. Total de fotos: " + photographedCount);
 
             // NUEVO: Disparamos el evento y le pasamos el nuevo valor del contador.
-            // El "?." es una comprobación de seguridad para no ejecutarlo si nadie está escuchando.
+            // El "?." es una comprobaciï¿½n de seguridad para no ejecutarlo si nadie estï¿½ escuchando.
             OnPhotoCountChanged?.Invoke(photographedCount);
 
             PrintChecklistStatus();
         }
     }
 
-    // Función de ayuda para ver el estado en la consola
+    // NUEVO: MÃ©todo pÃºblico para resetear completamente el checklist
+    public void ResetChecklist()
+    {
+        // Resetear el contador
+        photographedCount = 0;
+        
+        // Resetear todos los elementos del diccionario a false
+        var keys = new List<string>(photoChecklist.Keys);
+        foreach (var key in keys)
+        {
+            photoChecklist[key] = false;
+        }
+        
+        // Resetear todos los objetos fotografiables en la escena
+        PhotographableObject[] allObjects = FindObjectsOfType<PhotographableObject>();
+        foreach (var obj in allObjects)
+        {
+            obj.ResetPhotographState(); // Necesitaremos aÃ±adir este mÃ©todo al PhotographableObject
+        }
+        
+        // Disparar el evento de cambio de contador
+        OnPhotoCountChanged?.Invoke(photographedCount);
+        
+        Debug.Log("Â¡CHECKLIST RESETEADO COMPLETAMENTE!");
+        PrintChecklistStatus();
+    }
+
+    // FunciÃ³n de ayuda para ver el estado en la consola
     void PrintChecklistStatus()
     {
         Debug.Log("--- ESTADO DEL CHECKLIST ---");
-        Debug.Log("Total Fotografiado: " + photographedCount + "/" + photoChecklist.Count); // NUEVO: Mensaje más informativo
+        Debug.Log("Total Fotografiado: " + photographedCount + "/" + photoChecklist.Count); // NUEVO: Mensaje mÃ¡s informativo
         foreach (var item in photoChecklist)
         {
             Debug.Log(item.Key + ": " + (item.Value ? "Fotografiado" : "Pendiente"));

@@ -2745,7 +2745,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_System: {fileID: 566655438}
-  m_MoveSpeed: 3
+  m_MoveSpeed: 8
   m_EnableStrafe: 1
   m_UseGravity: 1
   m_GravityApplicationMode: 0
@@ -6359,15 +6359,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6716532139526531101, guid: 95190d90e2412694fb8928575a16af4b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 401.95
+      value: 410.11
       objectReference: {fileID: 0}
     - target: {fileID: 6716532139526531101, guid: 95190d90e2412694fb8928575a16af4b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 55.48
+      value: 57.33
       objectReference: {fileID: 0}
     - target: {fileID: 6716532139526531101, guid: 95190d90e2412694fb8928575a16af4b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 780.61
+      value: 783.65
       objectReference: {fileID: 0}
     - target: {fileID: 6716532139526531101, guid: 95190d90e2412694fb8928575a16af4b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6411,12 +6411,21 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3904018771517872877, guid: 95190d90e2412694fb8928575a16af4b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1905199266}
+    - targetCorrespondingSourceObject: {fileID: 3904018771517872877, guid: 95190d90e2412694fb8928575a16af4b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1905199269}
     - targetCorrespondingSourceObject: {fileID: 4196370527747877468, guid: 95190d90e2412694fb8928575a16af4b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 410254914}
     - targetCorrespondingSourceObject: {fileID: 4196370527747877468, guid: 95190d90e2412694fb8928575a16af4b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 410254918}
+    - targetCorrespondingSourceObject: {fileID: 2619683909121756986, guid: 95190d90e2412694fb8928575a16af4b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1824492568}
+    - targetCorrespondingSourceObject: {fileID: 2347875424233695062, guid: 95190d90e2412694fb8928575a16af4b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1731031696}
   m_SourcePrefab: {fileID: 100100000, guid: 95190d90e2412694fb8928575a16af4b, type: 3}
 --- !u!1001 &1641659533
 PrefabInstance:
@@ -6986,6 +6995,36 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a9076ab5936494aa6fa8145d1903c1b, type: 3}
+--- !u!1 &1731031693 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2347875424233695062, guid: 95190d90e2412694fb8928575a16af4b, type: 3}
+  m_PrefabInstance: {fileID: 1594511970}
+  m_PrefabAsset: {fileID: 0}
+--- !u!143 &1731031696
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731031693}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1751586496
 GameObject:
   m_ObjectHideFlags: 0
@@ -7513,6 +7552,36 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a9076ab5936494aa6fa8145d1903c1b, type: 3}
+--- !u!1 &1824492565 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2619683909121756986, guid: 95190d90e2412694fb8928575a16af4b, type: 3}
+  m_PrefabInstance: {fileID: 1594511970}
+  m_PrefabAsset: {fileID: 0}
+--- !u!143 &1824492568
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824492565}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1848275905
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8101,6 +8170,28 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1905199269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905199262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2710581469e52540b99bb7b24b37b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneReset
+  inputActionAsset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  useLeftHand: 1
+  useRightHand: 1
+  buttonType: 0
+  requireHoldTime: 1
+  holdTimeRequired: 5
+  resetPlayerPosition: 1
+  spawnPoint: {fileID: 0}
+  progressBar: {fileID: 0}
+  instructionText: {fileID: 0}
 --- !u!1001 &1906014124
 PrefabInstance:
   m_ObjectHideFlags: 0
