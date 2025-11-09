@@ -52,7 +52,7 @@ public class VRButton : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         // Detectar si es una mano
-        if (other.CompareTag("Hand") || other.name.Contains("Hand"))
+        if (other.CompareTag("hand") || other.name.Contains("hand"))
         {
             isPressed = true;
             transform.localPosition = pressedPosition;
@@ -71,7 +71,7 @@ public class VRButton : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Hand") || other.name.Contains("Hand"))
+        if (other.CompareTag("hand") || other.name.Contains("hand"))
         {
             if (buttonImage != null)
                 buttonImage.color = hoverColor;
@@ -80,7 +80,7 @@ public class VRButton : MonoBehaviour
     
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Hand") || other.name.Contains("Hand"))
+        if (other.CompareTag("hand") || other.name.Contains("hand"))
         {
             if (buttonImage != null)
                 buttonImage.color = normalColor;

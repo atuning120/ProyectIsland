@@ -7327,7 +7327,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -7398,7 +7398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRSliderHandle
   targetSlider: {fileID: 1486593888}
   sliderRect: {fileID: 1486593886}
-  fillArea: {fileID: 400451612}
+  fillArea: {fileID: 1190610851}
   xriInputActions: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   grabRadius: 0.1
   showDebug: 0

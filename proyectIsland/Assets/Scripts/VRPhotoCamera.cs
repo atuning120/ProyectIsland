@@ -1,11 +1,10 @@
-// VRPhotoCamera.cs (Versión Final con Efectos)
-using System.Collections; // NUEVO: Necesario para usar Corrutinas
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class VRPhotoCamera : MonoBehaviour
 {
-    [Header("Configuración")]
+    [Header("ConfiguraciÃ³n")]
     public float maxDistance = 100f;
     public LayerMask photographableLayer;
     public float focusTimeRequired = 2.0f;
@@ -16,21 +15,19 @@ public class VRPhotoCamera : MonoBehaviour
     public Color focusColor = Color.yellow;
     public Color readyColor = Color.green;
 
-    [Header("Efectos de Foto")] // NUEVO: Sección para los efectos
-    public Image flashPanel; // Arrastra aquí tu "FlashPanel"
-    public float flashDuration = 0.25f; // Duración total del flash
-    public AudioClip shutterSound; // Arrastra aquí tu archivo de sonido
+    [Header("Efectos de Foto")]
+    public Image flashPanel;
+    public float flashDuration = 0.25f;
+    public AudioClip shutterSound;
 
     private PhotographableObject currentTarget;
     private float currentFocusTime = 0f;
-    private AudioSource audioSource; // NUEVO: Para guardar la referencia al componente de audio
+    private AudioSource audioSource;
 
-    void Start() // NUEVO: Usamos Start para obtener el AudioSource al inicio
+    void Start()
     {
-        // Buscamos el componente AudioSource en este mismo objeto (la Main Camera)
         audioSource = GetComponent<AudioSource>();
 
-        // Es buena práctica asegurarse de que el flash está invisible al empezar
         if (flashPanel != null)
         {
             flashPanel.color = new Color(1f, 1f, 1f, 0f);
@@ -39,7 +36,13 @@ public class VRPhotoCamera : MonoBehaviour
 
     void Update()
     {
-        // Dibuja un rayo rojo para depuración en la vista de Scena
+        // NUEVO: No hacer nada si el juego estÃ¡ pausado
+        if (PauseMenuVR.IsPaused)
+        {
+            ResetFocus();
+            return;
+        }
+
         Debug.DrawRay(transform.position, transform.forward * maxDistance, Color.red);
         HandleAiming();
     }
@@ -79,11 +82,13 @@ public class VRPhotoCamera : MonoBehaviour
 
     void TakePhoto()
     {
+        // NUEVO: No tomar foto si el juego estÃ¡ pausado
+        if (PauseMenuVR.IsPaused) return;
+        
         if (currentTarget == null || currentTarget.isPhotographed) return;
 
-        Debug.Log("¡FOTO TOMADA!");
+        Debug.Log("Â¡FOTO TOMADA!");
 
-        // NUEVO: Disparamos los efectos
         SimulateFlash();
         PlayShutterSound();
 
@@ -97,7 +102,6 @@ public class VRPhotoCamera : MonoBehaviour
         reticleUI.color = defaultColor;
     }
 
-    // NUEVO: Método para llamar a la Corrutina del flash
     void SimulateFlash()
     {
         if (flashPanel != null)
@@ -106,26 +110,18 @@ public class VRPhotoCamera : MonoBehaviour
         }
     }
 
-    // NUEVO: Método para reproducir el sonido
     void PlayShutterSound()
     {
         if (audioSource != null && shutterSound != null)
         {
-            // PlayOneShot es ideal para efectos de sonido cortos y rápidos
             audioSource.PlayOneShot(shutterSound);
         }
     }
 
-    // NUEVO: Una Corrutina que maneja el efecto de aparecer y desaparecer del flash
     IEnumerator FlashEffect()
     {
-        // Aparece
         flashPanel.color = new Color(1f, 1f, 1f, 1f);
-
-        // Espera una fracción de segundo
         yield return new WaitForSeconds(flashDuration);
-
-        // Desaparece
         flashPanel.color = new Color(1f, 1f, 1f, 0f);
     }
 }
