@@ -8582,6 +8582,14 @@ MonoBehaviour:
   pauseMenuCanvas: {fileID: 1624096801}
   xriInputActions: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   buttonName: Secondary Button
+  locomotionSystem: {fileID: 566655438}
+  continuousMoveProvider: {fileID: 566655436}
+  snapTurnProvider: {fileID: 566655437}
+  continuousTurnProvider: {fileID: 0}
+  teleportationProvider: {fileID: 0}
+  vrCamera: {fileID: 410254909}
+  distanceFromPlayer: 2
+  heightOffset: 0
 --- !u!4 &1796590640
 Transform:
   m_ObjectHideFlags: 0

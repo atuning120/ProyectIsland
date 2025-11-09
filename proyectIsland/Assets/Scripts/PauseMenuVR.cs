@@ -7,34 +7,52 @@ public class PauseMenuVR : MonoBehaviour
 {
     [Header("UI")]
     [SerializeField] private GameObject pauseMenuCanvas;
-    
+
     [Header("XR Input Settings")]
     [Tooltip("Arrastra: XRI Default Input Actions.inputactions")]
     [SerializeField] private InputActionAsset xriInputActions;
-    
+
     [Header("Button Configuration")]
     [Tooltip("Secondary Button = Botón B | Select = Grip | Activate = Trigger")]
     [SerializeField] private string buttonName = "Secondary Button";
-    
+
     [Header("Locomotion Settings")]
     [Tooltip("Arrastra el Locomotion System de tu XR Origin")]
     [SerializeField] private LocomotionSystem locomotionSystem;
-    [Tooltip("Arrastra el Continuous Move Provider (opcional)")]
+    [Tooltip("Arrastra el Continuous Move Provider")]
     [SerializeField] private ActionBasedContinuousMoveProvider continuousMoveProvider;
-    [Tooltip("Arrastra el Snap Turn Provider (opcional)")]
+    [Tooltip("Arrastra el Snap Turn Provider")]
     [SerializeField] private ActionBasedSnapTurnProvider snapTurnProvider;
     [Tooltip("Arrastra el Continuous Turn Provider (opcional)")]
     [SerializeField] private ActionBasedContinuousTurnProvider continuousTurnProvider;
     [Tooltip("Arrastra el Teleportation Provider (opcional)")]
     [SerializeField] private TeleportationProvider teleportationProvider;
-    
+
+    [Header("Canvas Positioning")]
+    [Tooltip("Cámara VR (CenterEyeAnchor o Main Camera)")]
+    [SerializeField] private Transform vrCamera;
+    [Tooltip("Distancia del menú frente al jugador")]
+    [SerializeField] private float distanceFromPlayer = 2f;
+    [Tooltip("Altura adicional del menú (0 = a la altura de los ojos)")]
+    [SerializeField] private float heightOffset = 0f;
+
     private bool isPaused = false;
     private InputAction pauseAction;
 
     void Start()
     {
         pauseMenuCanvas.SetActive(false);
-        
+
+        // Buscar la cámara VR automáticamente si no está asignada
+        if (vrCamera == null)
+        {
+            vrCamera = Camera.main.transform;
+            if (vrCamera == null)
+            {
+                Debug.LogWarning("No se encontró la cámara VR. Asigna manualmente en el Inspector.");
+            }
+        }
+
         // Buscar la acción en el controlador derecho
         if (xriInputActions != null)
         {
@@ -56,14 +74,6 @@ public class PauseMenuVR : MonoBehaviour
                     }
                 }
             }
-            else
-            {
-                Debug.LogError("✗ No se encontró 'XRI RightHand Interaction'");
-            }
-        }
-        else
-        {
-            Debug.LogError("✗ XRI Input Actions no asignado");
         }
     }
 
@@ -73,51 +83,99 @@ public class PauseMenuVR : MonoBehaviour
         {
             TogglePause();
         }
+
+        // Mantener el canvas mirando al jugador mientras está en pausa
+        if (isPaused && pauseMenuCanvas.activeSelf)
+        {
+            UpdateCanvasOrientation();
+        }
     }
 
     public void TogglePause()
     {
         isPaused = !isPaused;
+
+        if (isPaused)
+        {
+            // Posicionar el canvas frente al jugador
+            PositionCanvasInFrontOfPlayer();
+        }
+
         pauseMenuCanvas.SetActive(isPaused);
-        
-        // Controlar la locomoción
         SetLocomotionEnabled(!isPaused);
-        
+
         Debug.Log($"Menú de pausa: {(isPaused ? "ABIERTO" : "CERRADO")}");
+    }
+
+    private void PositionCanvasInFrontOfPlayer()
+    {
+        if (vrCamera == null || pauseMenuCanvas == null) return;
+
+        // Obtener la posición y rotación de la cámara
+        Vector3 cameraPosition = vrCamera.position;
+        Vector3 cameraForward = vrCamera.forward;
+
+        // Ignorar la inclinación vertical (solo usar rotación horizontal)
+        cameraForward.y = 0;
+        cameraForward.Normalize();
+
+        // Calcular la posición frente al jugador
+        Vector3 menuPosition = cameraPosition + (cameraForward * distanceFromPlayer);
+        menuPosition.y = cameraPosition.y + heightOffset;
+
+        // Posicionar el canvas
+        pauseMenuCanvas.transform.position = menuPosition;
+
+        // Hacer que el canvas mire hacia el jugador
+        UpdateCanvasOrientation();
+    }
+
+    private void UpdateCanvasOrientation()
+    {
+        if (vrCamera == null || pauseMenuCanvas == null) return;
+
+        // Dirección desde el canvas hacia la cámara
+        Vector3 directionToCamera = vrCamera.position - pauseMenuCanvas.transform.position;
+
+        // Ignorar la componente vertical para mantener el canvas vertical
+        directionToCamera.y = 0;
+
+        // Solo rotar si hay una dirección válida
+        if (directionToCamera.sqrMagnitude > 0.001f)
+        {
+            // Hacer que el canvas mire hacia la cámara (invertido para que se vea de frente)
+            Quaternion targetRotation = Quaternion.LookRotation(-directionToCamera); // ← Nota el signo negativo
+            pauseMenuCanvas.transform.rotation = targetRotation;
+        }
     }
 
     private void SetLocomotionEnabled(bool enabled)
     {
-        // Deshabilitar/habilitar el sistema de locomoción completo
         if (locomotionSystem != null)
         {
             locomotionSystem.enabled = enabled;
         }
-        
-        // Deshabilitar/habilitar movimiento continuo
+
         if (continuousMoveProvider != null)
         {
             continuousMoveProvider.enabled = enabled;
         }
-        
-        // Deshabilitar/habilitar rotación snap
+
         if (snapTurnProvider != null)
         {
             snapTurnProvider.enabled = enabled;
         }
-        
-        // Deshabilitar/habilitar rotación continua
+
         if (continuousTurnProvider != null)
         {
             continuousTurnProvider.enabled = enabled;
         }
-        
-        // Deshabilitar/habilitar teletransporte
+
         if (teleportationProvider != null)
         {
             teleportationProvider.enabled = enabled;
         }
-        
+
         Debug.Log($"Locomoción: {(enabled ? "HABILITADA" : "DESHABILITADA")}");
     }
 
@@ -131,7 +189,6 @@ public class PauseMenuVR : MonoBehaviour
 
     public void RestartGame()
     {
-        // Habilitar locomoción antes de reiniciar
         SetLocomotionEnabled(true);
         Debug.Log("Reiniciando juego...");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
