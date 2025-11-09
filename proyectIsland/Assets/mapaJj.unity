@@ -841,6 +841,7 @@ GameObject:
   - component: {fileID: 187813588}
   - component: {fileID: 187813587}
   - component: {fileID: 187813590}
+  - component: {fileID: 187813591}
   m_Layer: 6
   m_Name: CONTINUAR
   m_TagString: Untagged
@@ -965,13 +966,13 @@ MonoBehaviour:
   onPress:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
+      - m_Target: {fileID: 1796590639}
+        m_TargetAssemblyTypeName: PauseMenuVR, Assembly-CSharp
+        m_MethodName: ResumeGame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -982,6 +983,27 @@ MonoBehaviour:
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   pressColor: {r: 0, g: 1, b: 0, a: 1}
+--- !u!65 &187813591
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187813585}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 400, y: 80, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &194435838
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1478,6 +1500,8 @@ GameObject:
   - component: {fileID: 362011267}
   - component: {fileID: 362011266}
   - component: {fileID: 362011265}
+  - component: {fileID: 362011269}
+  - component: {fileID: 362011268}
   m_Layer: 6
   m_Name: VOLUMEN
   m_TagString: Untagged
@@ -1587,6 +1611,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 362011263}
   m_CullTransparentMesh: 1
+--- !u!65 &362011268
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362011263}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 400, y: 80, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &362011269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362011263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c72d2a307ad516a4fa949ffd85d7e6e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRButton
+  onPress:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1796590638}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  pressDepth: 0.02
+  releaseSpeed: 5
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  pressColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1001 &365204026
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4584,7 +4661,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: VOLUMEN
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5347,6 +5424,8 @@ GameObject:
   - component: {fileID: 1232545315}
   - component: {fileID: 1232545314}
   - component: {fileID: 1232545313}
+  - component: {fileID: 1232545317}
+  - component: {fileID: 1232545316}
   m_Layer: 6
   m_Name: REINICIAR
   m_TagString: Untagged
@@ -5456,6 +5535,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1232545311}
   m_CullTransparentMesh: 1
+--- !u!65 &1232545316
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232545311}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 400, y: 80, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1232545317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232545311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c72d2a307ad516a4fa949ffd85d7e6e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRButton
+  onPress:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1796590639}
+        m_TargetAssemblyTypeName: PauseMenuVR, Assembly-CSharp
+        m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  pressDepth: 0.02
+  releaseSpeed: 5
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  pressColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1001 &1253149913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6252,7 +6384,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 'SALIR
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7130,7 +7264,6 @@ GameObject:
   - component: {fileID: 1624096805}
   - component: {fileID: 1624096804}
   - component: {fileID: 1624096803}
-  - component: {fileID: 1624096807}
   - component: {fileID: 1624096806}
   m_Layer: 6
   m_Name: MenuPause
@@ -7214,44 +7347,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1624096801}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7aaf960227867044282d921171d2d7ac, type: 3}
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Oculus.VR::OVRRaycaster
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
   m_IgnoreReversedGraphics: 1
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  pointer: {fileID: 0}
-  sortOrder: 0
---- !u!114 &1624096807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1624096801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee10491ef6d5d1d49a270cf6b09bdc19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Oculus.VR::OVROverlayCanvas
-  _enableMipmapping: 0
-  _dynamicResolution: 1
-  _redrawResolutionThreshold: 2147483647
-  rectTransform: {fileID: 1624096805}
-  maxTextureSize: 2048
-  manualRedraw: 0
-  renderInterval: 1
-  renderIntervalFrameOffset: 0
-  expensive: 0
-  layer: 5
-  opacity: 2
-  shape: 0
-  curveRadius: 1
-  overlapMask: 0
-  overlayType: 1
-  _overlayEnabled: 1
 --- !u!1001 &1641659533
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7763,7 +7866,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: REINICIAR
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8476,9 +8579,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ca13bef648224e419b5d6de4d3c8e83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseMenuVR
-  pauseMenuCanvas: {fileID: 0}
-  pauseButton: 2
-  controller: 2
+  pauseMenuCanvas: {fileID: 1624096801}
+  xriInputActions: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  buttonName: Secondary Button
 --- !u!4 &1796590640
 Transform:
   m_ObjectHideFlags: 0
@@ -8506,6 +8609,8 @@ GameObject:
   - component: {fileID: 1818796644}
   - component: {fileID: 1818796643}
   - component: {fileID: 1818796642}
+  - component: {fileID: 1818796646}
+  - component: {fileID: 1818796645}
   m_Layer: 6
   m_Name: SALIR
   m_TagString: Untagged
@@ -8615,6 +8720,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1818796640}
   m_CullTransparentMesh: 1
+--- !u!65 &1818796645
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818796640}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 400, y: 80, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1818796646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818796640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c72d2a307ad516a4fa949ffd85d7e6e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRButton
+  onPress:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1796590639}
+        m_TargetAssemblyTypeName: PauseMenuVR, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  pressDepth: 0.02
+  releaseSpeed: 5
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  pressColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1001 &1821804165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10292,7 +10450,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: CONTINUAR
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
