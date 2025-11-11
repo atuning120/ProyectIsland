@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PhotographableObject : MonoBehaviour
 {
-    public string objectName = "Tigre"; // Nombre para mostrar en el checklist
+    public string objectName = ""; // Nombre para mostrar en el checklist
     public bool isPhotographed = false;
 
     // Esta función será llamada por la cámara cuando se tome la foto
