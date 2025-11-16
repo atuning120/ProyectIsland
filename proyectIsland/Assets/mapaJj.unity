@@ -2191,11 +2191,11 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: e54434c96a68440bad7887853fab3037, type: 2}
-  m_TreeDistance: 500
+  m_TreeDistance: 200
   m_TreeBillboardDistance: 25
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 20
-  m_DetailObjectDistance: 40
+  m_DetailObjectDistance: 20
   m_DetailObjectDensity: 0.5
   m_HeightmapPixelError: 12
   m_SplatMapDistance: 500
@@ -2207,7 +2207,7 @@ Terrain:
   m_DrawTreesAndFoliage: 1
   m_StaticShadowCaster: 0
   m_IgnoreQualitySettings: 0
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 0
   m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
@@ -2220,7 +2220,7 @@ Terrain:
   m_AllowAutoConnect: 1
   m_EnableHeightmapRayTracing: 1
   m_EnableTreesAndDetailsRayTracing: 0
-  m_TreeMotionVectorModeOverride: 3
+  m_TreeMotionVectorModeOverride: 2
 --- !u!4 &1865889529
 Transform:
   m_ObjectHideFlags: 0
