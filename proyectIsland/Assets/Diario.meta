@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:proyectIsland/Assets/Diario.meta
 guid: 6c37be942e769e44e8546f9476012276
+========
+guid: ef4704122b624bc4382cf24751d24b00
+>>>>>>>> origin/mapaJ:proyectIsland/Assets/Garden Flowers and Herbs/Scenes/DemoScene1/Materials.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

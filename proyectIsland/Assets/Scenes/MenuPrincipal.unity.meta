@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:proyectIsland/Assets/Scenes/MenuPrincipal.unity.meta
 guid: ae8609eb6093ea5419491b2c4d58e58f
+========
+guid: 6c91bb880745ce3428f38516a6fdf507
+folderAsset: yes
+>>>>>>>> origin/mapaJ:proyectIsland/Assets/Garden Flowers and Herbs/Scenes/DemoScene2/Materials.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
