@@ -2207,6 +2207,19 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1223649436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223649430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2364a951f5d4b9446ba0aa7177115036, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  locomotionSystem: {fileID: 1188241428}
 --- !u!1001 &1237905703
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2283,6 +2296,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3904018771517872877, guid: 95190d90e2412694fb8928575a16af4b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1223649431}
+    - targetCorrespondingSourceObject: {fileID: 3904018771517872877, guid: 95190d90e2412694fb8928575a16af4b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1223649436}
     - targetCorrespondingSourceObject: {fileID: 4196370527747877468, guid: 95190d90e2412694fb8928575a16af4b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 994844228}

@@ -5,6 +5,7 @@ public class PhotographableObject : MonoBehaviour
 {
     public string objectName = ""; // Nombre para mostrar en el checklist
     public bool isPhotographed = false;
+    public string speciesID;
 
     // Esta función será llamada por la cámara cuando se tome la foto
     public void OnPhotograph()
