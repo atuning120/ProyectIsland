@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 
 public class PauseMenuVR : MonoBehaviour
 {
@@ -25,6 +26,16 @@ public class PauseMenuVR : MonoBehaviour
     [Header("Button Configuration")]
     [Tooltip("Secondary Button = Botón B | Select = Grip | Activate = Trigger")]
     [SerializeField] private string buttonName = "Secondary Button";
+
+    [Header("Menu Navigation (Left Hand)")]
+    [SerializeField] private string leftHandMapName = "XRI LeftHand Interaction";
+    [SerializeField] private string leftLocomotionMapName = "XRI LeftHand Locomotion";
+    [Tooltip("Botón para opción anterior (ej: X - Primary Button)")]
+    [SerializeField] private string prevOptionButton = "Primary Button";
+    [Tooltip("Botón para opción siguiente (ej: Y - Secondary Button)")]
+    [SerializeField] private string nextOptionButton = "Secondary Button";
+    [Tooltip("Joystick para mover sliders (ej: Move)")]
+    [SerializeField] private string sliderMoveAxis = "Move";
 
     [Header("Locomotion Settings")]
     [Tooltip("Arrastra el Locomotion System de tu XR Origin")]
@@ -50,6 +61,14 @@ public class PauseMenuVR : MonoBehaviour
 
     private bool isPaused = false;
     private InputAction pauseAction;
+    private InputAction navPrevAction;
+    private InputAction navNextAction;
+    private InputAction sliderAction;
+    
+    // Usamos Component para poder almacenar tanto VRButton como Slider
+    private System.Collections.Generic.List<Component> currentInteractables = new System.Collections.Generic.List<Component>();
+    private int currentSelectionIndex = 0;
+
     private float currentVolume = 1f;
 
     void Start()
@@ -97,6 +116,58 @@ public class PauseMenuVR : MonoBehaviour
                     }
                 }
             }
+
+            // Configuración de navegación (Mano Izquierda)
+            var leftHandMap = xriInputActions.FindActionMap(leftHandMapName);
+            var leftLocomotionMap = xriInputActions.FindActionMap(leftLocomotionMapName);
+
+            if (leftHandMap != null)
+            {
+                navPrevAction = leftHandMap.FindAction(prevOptionButton);
+                navNextAction = leftHandMap.FindAction(nextOptionButton);
+                
+                if (navPrevAction != null) 
+                {
+                    navPrevAction.Enable();
+                    Debug.Log($"✓ Acción de navegación 'Anterior' encontrada: {prevOptionButton}");
+                }
+                else
+                {
+                    Debug.LogError($"✗ No se encontró la acción '{prevOptionButton}' en el mapa '{leftHandMapName}'. Asegúrate de haberla creado en el Input Action Asset.");
+                }
+
+                if (navNextAction != null) 
+                {
+                    navNextAction.Enable();
+                    Debug.Log($"✓ Acción de navegación 'Siguiente' encontrada: {nextOptionButton}");
+                }
+                else
+                {
+                    Debug.LogError($"✗ No se encontró la acción '{nextOptionButton}' en el mapa '{leftHandMapName}'. Asegúrate de haberla creado en el Input Action Asset.");
+                }
+            }
+            else
+            {
+                Debug.LogError($"✗ No se encontró el mapa de acciones '{leftHandMapName}'. Verifica el nombre en el Inspector.");
+            }
+
+            if (leftLocomotionMap != null)
+            {
+                sliderAction = leftLocomotionMap.FindAction(sliderMoveAxis);
+                if (sliderAction != null) 
+                {
+                    sliderAction.Enable();
+                    Debug.Log($"✓ Acción de Slider encontrada: {sliderMoveAxis}");
+                }
+                else
+                {
+                    Debug.LogError($"✗ No se encontró la acción '{sliderMoveAxis}' en el mapa '{leftLocomotionMapName}'.");
+                }
+            }
+            else
+            {
+                Debug.LogError($"✗ No se encontró el mapa de locomoción '{leftLocomotionMapName}'.");
+            }
         }
     }
 
@@ -104,12 +175,24 @@ public class PauseMenuVR : MonoBehaviour
     {
         if (pauseAction != null && pauseAction.WasPressedThisFrame())
         {
-            TogglePause();
+            if (!isPaused)
+            {
+                TogglePause();
+            }
+            else
+            {
+                // Si está pausado, el botón B actúa como "Seleccionar"
+                SelectCurrentOption();
+            }
         }
 
-        if (isPaused && pauseMenuCanvas.activeSelf)
+        if (isPaused)
         {
-            UpdateCanvasOrientation();
+            if (pauseMenuCanvas.activeSelf)
+            {
+                UpdateCanvasOrientation();
+                HandleMenuNavigation();
+            }
         }
     }
 
@@ -118,12 +201,15 @@ public class PauseMenuVR : MonoBehaviour
         isPaused = !isPaused;
         IsPaused = isPaused;
 
+        // IMPORTANTE: Activar el Canvas PRIMERO para que 'activeInHierarchy' sea true en los botones
+        pauseMenuCanvas.SetActive(isPaused);
+
         if (isPaused)
         {
             PositionCanvasInFrontOfPlayer();
             PausePhotographableObjects(true);
-            ShowMainMenu();
-
+            ShowMainMenu(); 
+            
             Debug.Log("🎮 JUEGO PAUSADO - Objetos fotografiables congelados y muteados");
         }
         else
@@ -133,8 +219,15 @@ public class PauseMenuVR : MonoBehaviour
             Debug.Log("▶️ JUEGO REANUDADO - Objetos fotografiables activos con audio");
         }
 
-        pauseMenuCanvas.SetActive(isPaused);
         SetLocomotionEnabled(!isPaused);
+
+        if (isPaused)
+        {
+            // Re-habilitar acciones de navegación por si se desactivaron con la locomoción
+            if (navPrevAction != null) navPrevAction.Enable();
+            if (navNextAction != null) navNextAction.Enable();
+            if (sliderAction != null) sliderAction.Enable();
+        }
 
         Debug.Log($"Menú de pausa: {(isPaused ? "ABIERTO" : "CERRADO")}");
     }
@@ -144,6 +237,7 @@ public class PauseMenuVR : MonoBehaviour
     {
         mainMenuPanel.SetActive(true);
         volumePanel.SetActive(false);
+        RefreshInteractables(); // Actualizar lista de botones
         Debug.Log("📋 Menú principal mostrado");
     }
 
@@ -152,6 +246,7 @@ public class PauseMenuVR : MonoBehaviour
     {
         mainMenuPanel.SetActive(false);
         volumePanel.SetActive(true);
+        RefreshInteractables(); // Actualizar lista de botones/sliders
         Debug.Log("🔊 Menú de volumen mostrado");
     }
 
@@ -326,6 +421,143 @@ public class PauseMenuVR : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    private void HandleMenuNavigation()
+    {
+        if (navPrevAction != null && navPrevAction.WasPressedThisFrame())
+        {
+            Debug.Log("Botón 'Anterior' presionado");
+            ChangeSelection(-1);
+        }
+        
+        if (navNextAction != null && navNextAction.WasPressedThisFrame())
+        {
+            Debug.Log("Botón 'Siguiente' presionado");
+            ChangeSelection(1);
+        }
+
+        // Control de Slider con Joystick
+        if (sliderAction != null && currentInteractables.Count > 0)
+        {
+            if (currentSelectionIndex >= 0 && currentSelectionIndex < currentInteractables.Count)
+            {
+                Component current = currentInteractables[currentSelectionIndex];
+                if (current is Slider slider)
+                {
+                    Vector2 input = sliderAction.ReadValue<Vector2>();
+                    if (Mathf.Abs(input.x) > 0.1f)
+                    {
+                        slider.value += input.x * Time.unscaledDeltaTime; // Ajustar velocidad si es necesario
+                    }
+                }
+            }
+        }
+    }
+
+    private void ChangeSelection(int direction)
+    {
+        if (currentInteractables.Count == 0) 
+        {
+            Debug.LogWarning("⚠️ No hay elementos interactuables en la lista para navegar.");
+            return;
+        }
+
+        currentSelectionIndex += direction;
+        if (currentSelectionIndex < 0) currentSelectionIndex = currentInteractables.Count - 1;
+        if (currentSelectionIndex >= currentInteractables.Count) currentSelectionIndex = 0;
+
+        Debug.Log($"Seleccionando índice: {currentSelectionIndex} - Objeto: {currentInteractables[currentSelectionIndex].name}");
+        HighlightCurrentOption();
+    }
+
+    private void HighlightCurrentOption()
+    {
+        if (currentInteractables.Count == 0) return;
+        
+        // Primero deseleccionar todo visualmente
+        foreach(var item in currentInteractables)
+        {
+            if (item is VRButton vrb) vrb.SetHighlight(false);
+            // Sliders se manejan con EventSystem, lo limpiamos abajo si es necesario
+        }
+
+        if (currentSelectionIndex >= 0 && currentSelectionIndex < currentInteractables.Count)
+        {
+            Component current = currentInteractables[currentSelectionIndex];
+            
+            if (current is VRButton vrb)
+            {
+                vrb.SetHighlight(true);
+                // Limpiar selección del EventSystem para que no se quede marcado un slider anterior
+                if (EventSystem.current != null) EventSystem.current.SetSelectedGameObject(null);
+            }
+            else if (current is Selectable s)
+            {
+                s.Select();
+                if (EventSystem.current != null) EventSystem.current.SetSelectedGameObject(s.gameObject);
+            }
+        }
+    }
+
+    private void SelectCurrentOption()
+    {
+        if (currentInteractables.Count == 0) return;
+        
+        if (currentSelectionIndex >= 0 && currentSelectionIndex < currentInteractables.Count)
+        {
+            Component current = currentInteractables[currentSelectionIndex];
+            
+            if (current is VRButton vrb)
+            {
+                vrb.SimulateClick();
+            }
+            else if (current is Button btn)
+            {
+                btn.onClick.Invoke();
+            }
+            // Si es slider, ya se controla con el joystick
+        }
+    }
+
+    private void RefreshInteractables()
+    {
+        currentInteractables.Clear();
+        GameObject activePanel = null;
+        
+        if (mainMenuPanel.activeSelf) activePanel = mainMenuPanel;
+        else if (volumePanel.activeSelf) activePanel = volumePanel;
+        
+        if (activePanel != null)
+        {
+            // 1. Buscar VRButtons
+            VRButton[] vrButtons = activePanel.GetComponentsInChildren<VRButton>();
+            foreach(var btn in vrButtons)
+            {
+                if (btn.gameObject.activeInHierarchy)
+                {
+                    currentInteractables.Add(btn);
+                }
+            }
+
+            // 2. Buscar Sliders (u otros Selectables estándar que no sean botones VR)
+            Slider[] sliders = activePanel.GetComponentsInChildren<Slider>();
+            foreach(var s in sliders)
+            {
+                if (s.gameObject.activeInHierarchy && s.interactable)
+                {
+                    currentInteractables.Add(s);
+                }
+            }
+            
+            // Ordenar por posición vertical (de arriba a abajo)
+            currentInteractables.Sort((a, b) => b.transform.position.y.CompareTo(a.transform.position.y));
+            
+            Debug.Log($"Se encontraron {currentInteractables.Count} elementos interactuables (VRButtons + Sliders).");
+        }
+        
+        currentSelectionIndex = 0;
+        HighlightCurrentOption();
+    }
+
     public void QuitGame()
     {
         IsPaused = false;
@@ -340,10 +572,10 @@ public class PauseMenuVR : MonoBehaviour
 
     void OnDestroy()
     {
-        if (pauseAction != null)
-        {
-            pauseAction.Disable();
-        }
+        if (pauseAction != null) pauseAction.Disable();
+        if (navPrevAction != null) navPrevAction.Disable();
+        if (navNextAction != null) navNextAction.Disable();
+        if (sliderAction != null) sliderAction.Disable();
 
         // Guardar volumen al salir
         if (volumeSlider != null)

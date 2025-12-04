@@ -86,4 +86,25 @@ public class VRButton : MonoBehaviour
                 buttonImage.color = normalColor;
         }
     }
+
+    // Métodos públicos para control externo (Gamepad/Teclado)
+    public void SetHighlight(bool highlighted)
+    {
+        if (buttonImage != null)
+            buttonImage.color = highlighted ? hoverColor : normalColor;
+    }
+
+    public void SimulateClick()
+    {
+        onPress?.Invoke();
+        StartCoroutine(SimulatePressVisuals());
+    }
+
+    private System.Collections.IEnumerator SimulatePressVisuals()
+    {
+        if (buttonImage != null) buttonImage.color = pressColor;
+        yield return new WaitForSeconds(0.15f);
+        // Regresar al color de hover porque se supone que sigue seleccionado
+        if (buttonImage != null) buttonImage.color = hoverColor;
+    }
 }
