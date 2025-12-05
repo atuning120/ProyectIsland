@@ -36,7 +36,10 @@ public class ToggleController : MonoBehaviour
             return;
         }
 
-        diaryObject.SetActive(myToggle.isOn);
+        // Aseguramos que el diario inicie desactivado para que no aparezca al inicio
+        myToggle.isOn = false;
+        diaryObject.SetActive(false);
+
         myToggle.onValueChanged.AddListener(OnToggleChanged);
 
         // 2. Lógica de Input (Igual que en PauseMenuVR)
