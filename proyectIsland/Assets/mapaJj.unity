@@ -8745,6 +8745,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ToggleController
   myToggle: {fileID: 1417166170}
   diaryObject: {fileID: 1011963631}
+  spawnDistance: 4
+  rotationOffset: {x: 0, y: 0, z: 180}
   inputActions: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   actionMapName: XRI RightHand Interaction
   buttonName: Primary Button

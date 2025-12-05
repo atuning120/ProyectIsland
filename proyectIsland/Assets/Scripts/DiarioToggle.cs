@@ -8,6 +8,12 @@ public class ToggleController : MonoBehaviour
     public Toggle myToggle;                 // El toggle invisible
     public GameObject diaryObject;          // Diario a activar/desactivar
 
+    [Header("Spawn Settings")]
+    [Tooltip("Distancia a la que aparece el diario frente al jugador")]
+    public float spawnDistance = 1.0f;
+    [Tooltip("Ajuste de rotación adicional (x, y, z) para corregir si sale al revés o de cabeza")]
+    public Vector3 rotationOffset = Vector3.zero;
+
     [Header("Input Settings")]
     [Tooltip("Arrastra aquí tu archivo: XRI Default Input Actions.inputactions")]
     [SerializeField] private InputActionAsset inputActions;
@@ -91,7 +97,37 @@ public class ToggleController : MonoBehaviour
     void OnToggleChanged(bool value)
     {
         if (diaryObject != null)
+        {
+            if (value)
+            {
+                PositionDiary();
+            }
             diaryObject.SetActive(value);
+        }
+    }
+
+    void PositionDiary()
+    {
+        Camera mainCam = Camera.main;
+        if (mainCam != null)
+        {
+            // 1. Calcular dirección frente al jugador (ignorando inclinación vertical/pitch)
+            Vector3 forwardFlat = mainCam.transform.forward;
+            forwardFlat.y = 0; 
+            forwardFlat.Normalize();
+
+            // 2. Posicionar frente a la cámara (a la misma altura de la cámara, pero sin bajar/subir por la mirada)
+            diaryObject.transform.position = mainCam.transform.position + (forwardFlat * spawnDistance);
+            
+            // 3. Rotar para mirar hacia el jugador (solo en el eje Y)
+            // Creamos un punto objetivo que está en la misma posición XZ que la cámara, pero a la altura del diario
+            Vector3 targetPostition = new Vector3(mainCam.transform.position.x, diaryObject.transform.position.y, mainCam.transform.position.z);
+            
+            diaryObject.transform.LookAt(targetPostition);
+
+            // 4. Aplicar corrección manual si es necesario (ej: si sale de cabeza o rotado)
+            diaryObject.transform.Rotate(rotationOffset);
+        }
     }
 
     void OnDestroy()
