@@ -32,6 +32,8 @@ public class WildAnimalAI : MonoBehaviour
     [SerializeField] private float animalCallFrequency = 0.05f; // Probabilidad de hacer el ruido característico
     [SerializeField] private Vector2 volumeRange = new Vector2(0.4f, 0.7f); // Rango de volumen
     [SerializeField] private Vector2 pitchRange = new Vector2(0.9f, 1.1f); // Rango de pitch
+    [SerializeField] private float minSoundDistance = 1f; // Distancia mínima para volumen máximo
+    [SerializeField] private float maxSoundDistance = 5f; // Distancia máxima donde se escucha
     
     private CreatureMover creatureMover;
     private Vector3 startPosition;
@@ -67,10 +69,14 @@ public class WildAnimalAI : MonoBehaviour
             if (audioSource == null)
             {
                 audioSource = gameObject.AddComponent<AudioSource>();
-                audioSource.spatialBlend = 1f; // Sonido 3D
-                audioSource.volume = 0.5f;
             }
         }
+
+        // Configurar propiedades 3D del AudioSource
+        audioSource.spatialBlend = 1f; // Sonido 3D
+        audioSource.rolloffMode = AudioRolloffMode.Linear; // Atenuación lineal para control preciso de distancia
+        audioSource.minDistance = minSoundDistance;
+        audioSource.maxDistance = maxSoundDistance;
         
         // Inicializar timers de sonido
         footstepTimer = footstepInterval;
