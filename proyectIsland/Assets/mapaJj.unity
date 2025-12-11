@@ -3239,11 +3239,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SprintController
   moveProvider: {fileID: 566655436}
   walkSpeed: 8
-  runSpeed: 12
+  runSpeed: 16
   inputActionAsset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   useLeftHand: 1
   useRightHand: 1
-  actionName: Activate
+  actionName: Select
 --- !u!1001 &586167496
 PrefabInstance:
   m_ObjectHideFlags: 0

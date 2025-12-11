@@ -24,11 +24,12 @@ public class SprintController : MonoBehaviour
     [Tooltip("Usar gatillo de mano derecha")]
     public bool useRightHand = false;
 
-    [Tooltip("Nombre de la acción a usar (Activate = Gatillo, Select = Agarre)")]
-    public string actionName = "Activate";
+    [Tooltip("Nombre de la acción a usar (Activate = Gatillo/L2/R2, Select = Agarre/L3/R3)")]
+    public string actionName = "Select";
 
     private InputAction leftHandRunAction;
     private InputAction rightHandRunAction;
+    private int buttonsPressed = 0;
 
     private void Start()
     {
@@ -46,6 +47,7 @@ public class SprintController : MonoBehaviour
         if (moveProvider != null)
         {
             moveProvider.moveSpeed = walkSpeed;
+            Debug.Log($"[SprintController] Inicializado. Velocidad base: {walkSpeed}");
         }
 
         InitializeInput();
@@ -92,17 +94,23 @@ public class SprintController : MonoBehaviour
 
     private void OnSprintStarted(InputAction.CallbackContext context)
     {
+        buttonsPressed++;
         if (moveProvider != null)
         {
             moveProvider.moveSpeed = runSpeed;
+            Debug.Log($"[SprintController] Corriendo! Velocidad cambiada a: {runSpeed} (Botones: {buttonsPressed})");
         }
     }
 
     private void OnSprintEnded(InputAction.CallbackContext context)
     {
-        if (moveProvider != null)
+        buttonsPressed--;
+        if (buttonsPressed < 0) buttonsPressed = 0;
+
+        if (moveProvider != null && buttonsPressed == 0)
         {
             moveProvider.moveSpeed = walkSpeed;
+            Debug.Log($"[SprintController] Caminando. Velocidad restaurada a: {walkSpeed}");
         }
     }
 
