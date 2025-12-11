@@ -3105,6 +3105,7 @@ GameObject:
   - component: {fileID: 566655438}
   - component: {fileID: 566655437}
   - component: {fileID: 566655436}
+  - component: {fileID: 566655440}
   m_Layer: 0
   m_Name: Locomotion System
   m_TagString: Untagged
@@ -3224,6 +3225,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &566655440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566655435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e712b14790574b9408c005aedec7a0b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SprintController
+  moveProvider: {fileID: 566655436}
+  walkSpeed: 8
+  runSpeed: 12
+  inputActionAsset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  useLeftHand: 1
+  useRightHand: 1
+  actionName: Activate
 --- !u!1001 &586167496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9222,9 +9242,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3904018771517872877, guid: 95190d90e2412694fb8928575a16af4b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1905199266}
-    - targetCorrespondingSourceObject: {fileID: 3904018771517872877, guid: 95190d90e2412694fb8928575a16af4b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1905199269}
     - targetCorrespondingSourceObject: {fileID: 4196370527747877468, guid: 95190d90e2412694fb8928575a16af4b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 410254914}
@@ -10958,28 +10975,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1905199269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1905199262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2710581469e52540b99bb7b24b37b90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SceneReset
-  inputActionAsset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  useLeftHand: 1
-  useRightHand: 1
-  buttonType: 0
-  requireHoldTime: 1
-  holdTimeRequired: 5
-  resetPlayerPosition: 1
-  spawnPoint: {fileID: 0}
-  progressBar: {fileID: 0}
-  instructionText: {fileID: 0}
 --- !u!4 &1905199270 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6716532139526531101, guid: 95190d90e2412694fb8928575a16af4b, type: 3}
