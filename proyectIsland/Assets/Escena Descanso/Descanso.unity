@@ -1138,8 +1138,8 @@ MonoBehaviour:
   pressDepth: 0.02
   releaseSpeed: 5
   normalColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  pressColor: {r: 0, g: 1, b: 0, a: 1}
+  hoverColor: {r: 0, g: 1, b: 0, a: 1}
+  pressColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!65 &611388098
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1336,15 +1336,15 @@ MonoBehaviour:
   buttonName: Secondary Button
   leftHandMapName: XRI LeftHand Interaction
   leftLocomotionMapName: XRI LeftHand Locomotion
-  prevOptionButton: Primary Button
-  nextOptionButton: Secondary Button
+  prevOptionButton: Secondary Button
+  nextOptionButton: Primary Button
   sliderMoveAxis: Move
-  locomotionSystem: {fileID: 0}
-  continuousMoveProvider: {fileID: 0}
-  snapTurnProvider: {fileID: 0}
+  locomotionSystem: {fileID: 229853358}
+  continuousMoveProvider: {fileID: 229853356}
+  snapTurnProvider: {fileID: 229853357}
   continuousTurnProvider: {fileID: 0}
   teleportationProvider: {fileID: 0}
-  vrCamera: {fileID: 0}
+  vrCamera: {fileID: 1061242505}
   distanceFromPlayer: 0.88
   heightOffset: 0
 --- !u!4 &776237990
@@ -1550,9 +1550,9 @@ MonoBehaviour:
         m_CallState: 2
   pressDepth: 0.02
   releaseSpeed: 5
-  normalColor: {r: 0, g: 1, b: 0, a: 1}
-  hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  pressColor: {r: 0.6981132, g: 0.4029576, b: 0.26673195, a: 1}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  hoverColor: {r: 0, g: 1, b: 0, a: 1}
+  pressColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!65 &811255687
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1999,8 +1999,8 @@ MonoBehaviour:
   pressDepth: 0.02
   releaseSpeed: 5
   normalColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  pressColor: {r: 0, g: 1, b: 0, a: 1}
+  hoverColor: {r: 0, g: 1, b: 0, a: 1}
+  pressColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!65 &923178544
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2238,6 +2238,11 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1061242505 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6988646150901837589, guid: 95190d90e2412694fb8928575a16af4b, type: 3}
+  m_PrefabInstance: {fileID: 1061242501}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1062382556
 GameObject:
   m_ObjectHideFlags: 0
@@ -3680,8 +3685,8 @@ MonoBehaviour:
   pressDepth: 0.02
   releaseSpeed: 5
   normalColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  pressColor: {r: 0, g: 1, b: 0, a: 1}
+  hoverColor: {r: 0, g: 1, b: 0, a: 1}
+  pressColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &1723943214
 GameObject:
   m_ObjectHideFlags: 0
@@ -4185,8 +4190,8 @@ MonoBehaviour:
   pressDepth: 0.02
   releaseSpeed: 5
   normalColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  pressColor: {r: 0, g: 1, b: 0, a: 1}
+  hoverColor: {r: 0, g: 1, b: 0, a: 1}
+  pressColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!65 &1995347658
 BoxCollider:
   m_ObjectHideFlags: 0
