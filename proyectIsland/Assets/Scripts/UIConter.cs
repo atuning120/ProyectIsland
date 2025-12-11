@@ -20,15 +20,16 @@ public class UICounter : MonoBehaviour
         }
     }
 
-    // Esta función será llamada automáticamente por el evento
+    // Esta funcin ser llamada automticamente por el evento
     public void UpdateCounterText(int newCount)
     {
-        counterText.text =  newCount + "/ 10 " ;
+        int max = ChecklistManager.Instance ? ChecklistManager.Instance.totalPhotosNeeded : 6;
+        counterText.text =  newCount + "/ " + max + " ";
     }
 
     private void OnDestroy()
     {
-        // Buena práctica: desconectar el listener cuando el objeto se destruye
+        // Buena prï¿½ctica: desconectar el listener cuando el objeto se destruye
         if (ChecklistManager.Instance != null)
         {
             ChecklistManager.Instance.OnPhotoCountChanged.RemoveListener(UpdateCounterText);

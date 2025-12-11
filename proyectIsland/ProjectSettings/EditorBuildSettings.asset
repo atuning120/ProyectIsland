@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/mapaJj.unity
     guid: 39a0f99af41c02a40945899c904b61eb
+  - enabled: 1
+    path: Assets/Escena Descanso/Descanso.unity
+    guid: 7a9ec4881566d3147a739ff3c55b5c0b
   - enabled: 0
     path: Assets/Samples/XR Interaction Toolkit/3.3.0/Starter Assets/DemoScene.unity
     guid: 319dafa5c80f29f428dc1e0d03f04177

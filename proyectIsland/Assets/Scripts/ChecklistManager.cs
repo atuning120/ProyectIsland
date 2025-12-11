@@ -1,12 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class ChecklistManager : MonoBehaviour
 {
     public static ChecklistManager Instance { get; private set; }
     public Dictionary<string, bool> photoChecklist = new Dictionary<string, bool>();
     public int photographedCount { get; private set; } = 0;
+    public int totalPhotosNeeded = 6; // Meta de fotos a conseguir
     public UnityEvent<int> OnPhotoCountChanged;
 
     private void Awake()
@@ -58,6 +60,13 @@ public class ChecklistManager : MonoBehaviour
             UpdateAllAnimalsPhysics(objectName, false);
 
             PrintChecklistStatus();
+
+            // Verificar si ya completamos todas las fotos
+            if (photographedCount >= totalPhotosNeeded)
+            {
+                Debug.Log("¡Todas las fotos completadas! Cambiando a escena Descanso...");
+                SceneManager.LoadScene("Descanso");
+            }
         }
     }
 

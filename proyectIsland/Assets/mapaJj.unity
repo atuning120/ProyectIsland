@@ -960,6 +960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52f97e769143c4e41890dee91c5c936f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  totalPhotosNeeded: 6
   OnPhotoCountChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -8224,6 +8225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52f97e769143c4e41890dee91c5c936f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChecklistManager
+  totalPhotosNeeded: 6
   OnPhotoCountChanged:
     m_PersistentCalls:
       m_Calls: []
