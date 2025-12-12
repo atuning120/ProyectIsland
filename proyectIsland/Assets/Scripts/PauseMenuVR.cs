@@ -561,13 +561,10 @@ public class PauseMenuVR : MonoBehaviour
     public void QuitGame()
     {
         IsPaused = false;
+        SetLocomotionEnabled(true);
 
-        Debug.Log("👋 Saliendo del juego...");
-        Application.Quit();
-
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#endif
+        Debug.Log("🔙 Volviendo al menú principal...");
+        SceneManager.LoadScene("MainMenu");
     }
 
     void OnDestroy()
