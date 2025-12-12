@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class VRButton : MonoBehaviour
 {
     [Header("Button Settings")]
-    [SerializeField] private UnityEvent onPress;
+    [SerializeField] public UnityEvent onPress;
     [SerializeField] private float pressDepth = 0.02f;
     [SerializeField] private float releaseSpeed = 5f;
     
