@@ -1,16 +1,16 @@
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit; // Aqu� est� todo lo necesario
-using TMPro; // Si usas TextMeshPro
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class TutorialManager : MonoBehaviour
 {
     [Header("Objetos VR")]
-    // CORREGIDO: Quitamos ".Interactables" y dejamos solo el tipo
     public XRGrabInteractable cameraGrab;
     public XRGrabInteractable diaryGrab;
 
     [Header("Paneles de Instrucciones")]
     public GameObject panelBienvenida;
+    public GameObject panelMovimiento;     // ← NUEVO
+    public GameObject panelAbrirMenu;      // ← NUEVO
     public GameObject panelCamara;
     public GameObject panelDiario;
     public GameObject panelUsoDiario;
@@ -25,18 +25,37 @@ public class TutorialManager : MonoBehaviour
 
     void Start()
     {
-        // 1. Configuraci�n Inicial
         OcultarTodosPaneles();
+
+        // Mostrar bienvenida
         if (panelBienvenida != null) panelBienvenida.SetActive(true);
 
+        // Ocultar UI
         if (contadorFotosUI != null) contadorFotosUI.SetActive(false);
         if (iconoCamaraUI != null) iconoCamaraUI.SetActive(false);
 
-        // 2. BLOQUEO F�SICO
+        // Bloquear diario al inicio
         if (diaryGrab != null) diaryGrab.enabled = false;
+
+        // Mostrar movimiento después de bienvenida
+        Invoke("MostrarPanelMovimiento", 4.0f);
     }
 
-    // --- M�TODOS P�BLICOS ---
+    // ---------------------------
+    // SECUENCIA DEL TUTORIAL
+    // ---------------------------
+
+    void MostrarPanelMovimiento()
+    {
+        OcultarTodosPaneles();
+        if (panelMovimiento != null) panelMovimiento.SetActive(true);
+        Invoke("OcultarPanelMovimiento", 5.0f);
+    }
+    void OcultarPanelMovimiento()
+{
+    if (panelMovimiento != null)
+        panelMovimiento.SetActive(false);
+}
 
     public void JugadorTomoCamara()
     {
@@ -44,27 +63,26 @@ public class TutorialManager : MonoBehaviour
         {
             pasoActual = 1;
             OcultarTodosPaneles();
-            if (panelCamara != null) panelCamara.SetActive(true);
 
+            if (panelCamara != null) panelCamara.SetActive(true);
             if (iconoCamaraUI != null) iconoCamaraUI.SetActive(true);
 
-            Debug.Log("Tutorial: C�mara tomada. Esperando foto a la Carpa.");
+            Debug.Log("Tutorial: Cámara tomada.");
         }
     }
 
     public void VerificarFoto(string nombreObjeto)
     {
-        // Solo importa si estamos en el paso 1 y es la Carpa
         if (pasoActual == 1 && nombreObjeto == "Carpa")
         {
             pasoActual = 2;
             OcultarTodosPaneles();
+
             if (panelDiario != null) panelDiario.SetActive(true);
 
-            // DESBLOQUEO
             if (diaryGrab != null) diaryGrab.enabled = true;
 
-            Debug.Log("Tutorial: Foto Carpa lista. Diario desbloqueado.");
+            Debug.Log("Tutorial: Foto correcta. Diario desbloqueado.");
         }
     }
 
@@ -74,6 +92,7 @@ public class TutorialManager : MonoBehaviour
         {
             pasoActual = 3;
             OcultarTodosPaneles();
+
             if (panelUsoDiario != null) panelUsoDiario.SetActive(true);
 
             Invoke("MostrarPanelCorrer", 6.0f);
@@ -85,6 +104,16 @@ public class TutorialManager : MonoBehaviour
         OcultarTodosPaneles();
         if (panelCorrer != null) panelCorrer.SetActive(true);
 
+        // NUEVO → después de correr, mostrar panel para abrir menú
+        Invoke("MostrarPanelAbrirMenu", 6.0f);
+    }
+
+    void MostrarPanelAbrirMenu()
+    {
+        OcultarTodosPaneles();
+        if (panelAbrirMenu != null) panelAbrirMenu.SetActive(true);
+
+        // Luego del panel de menú → objetivo final
         Invoke("MostrarObjetivoFinal", 6.0f);
     }
 
@@ -103,9 +132,15 @@ public class TutorialManager : MonoBehaviour
         if (panelFinal != null) panelFinal.SetActive(false);
     }
 
+    // ---------------------------
+    // UTILIDAD
+    // ---------------------------
+
     void OcultarTodosPaneles()
     {
         if (panelBienvenida) panelBienvenida.SetActive(false);
+        if (panelMovimiento) panelMovimiento.SetActive(false);
+        if (panelAbrirMenu) panelAbrirMenu.SetActive(false);
         if (panelCamara) panelCamara.SetActive(false);
         if (panelDiario) panelDiario.SetActive(false);
         if (panelUsoDiario) panelUsoDiario.SetActive(false);
