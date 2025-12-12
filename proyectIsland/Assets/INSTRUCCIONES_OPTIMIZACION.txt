@@ -1,0 +1,19 @@
+INSTRUCCIONES PARA REDUCIR TIEMPO DE BUILD
+==========================================
+
+El problema es que el shader "BK/Standard Layered Masked" está compilando miles de variantes innecesarias.
+He creado un script en "Assets/Editor/BKShaderStripper.cs" que elimina automáticamente variantes comunes que suelen no usarse (Decals, Light Cookies, Light Layers).
+
+PARA SOLUCIONARLO DE RAÍZ (RECOMENDADO):
+
+1. Ve a la carpeta "Assets/Settings".
+2. Selecciona el archivo "PC_RPAsset" (o "Mobile_RPAsset" si estás construyendo para Quest/Android).
+3. En el Inspector, busca las siguientes opciones y DESACTÍVALAS si no las usas:
+   - Lighting -> Light Cookies
+   - Lighting -> Light Layers
+   - Lighting -> Reflection Probes -> Probe Blending (si no es vital)
+   - Lighting -> Reflection Probes -> Box Projection (si no es vital)
+   - Shadows -> Soft Shadows (si puedes vivir con sombras duras, ahorra mucho)
+4. Si no usas Decals (calcomanías), busca la sección de Renderer (dentro del asset de renderer asociado, ej: "PC_Renderer") y quita el "Decal Feature" si existe, o asegúrate de que no esté habilitado en el Pipeline Asset.
+
+Esto reducirá drásticamente el número de variantes que Unity necesita compilar.
