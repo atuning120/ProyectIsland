@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit; // Aquí está todo lo necesario
+using UnityEngine.XR.Interaction.Toolkit; // Aquï¿½ estï¿½ todo lo necesario
 using TMPro; // Si usas TextMeshPro
 
 public class TutorialManager : MonoBehaviour
@@ -14,6 +14,7 @@ public class TutorialManager : MonoBehaviour
     public GameObject panelCamara;
     public GameObject panelDiario;
     public GameObject panelUsoDiario;
+    public GameObject panelCorrer;
     public GameObject panelFinal;
 
     [Header("UI del Juego")]
@@ -24,18 +25,18 @@ public class TutorialManager : MonoBehaviour
 
     void Start()
     {
-        // 1. Configuración Inicial
+        // 1. Configuraciï¿½n Inicial
         OcultarTodosPaneles();
         if (panelBienvenida != null) panelBienvenida.SetActive(true);
 
         if (contadorFotosUI != null) contadorFotosUI.SetActive(false);
         if (iconoCamaraUI != null) iconoCamaraUI.SetActive(false);
 
-        // 2. BLOQUEO FÍSICO
+        // 2. BLOQUEO Fï¿½SICO
         if (diaryGrab != null) diaryGrab.enabled = false;
     }
 
-    // --- MÉTODOS PÚBLICOS ---
+    // --- Mï¿½TODOS Pï¿½BLICOS ---
 
     public void JugadorTomoCamara()
     {
@@ -47,7 +48,7 @@ public class TutorialManager : MonoBehaviour
 
             if (iconoCamaraUI != null) iconoCamaraUI.SetActive(true);
 
-            Debug.Log("Tutorial: Cámara tomada. Esperando foto a la Carpa.");
+            Debug.Log("Tutorial: Cï¿½mara tomada. Esperando foto a la Carpa.");
         }
     }
 
@@ -75,8 +76,16 @@ public class TutorialManager : MonoBehaviour
             OcultarTodosPaneles();
             if (panelUsoDiario != null) panelUsoDiario.SetActive(true);
 
-            Invoke("MostrarObjetivoFinal", 6.0f);
+            Invoke("MostrarPanelCorrer", 6.0f);
         }
+    }
+
+    void MostrarPanelCorrer()
+    {
+        OcultarTodosPaneles();
+        if (panelCorrer != null) panelCorrer.SetActive(true);
+
+        Invoke("MostrarObjetivoFinal", 6.0f);
     }
 
     void MostrarObjetivoFinal()
@@ -100,6 +109,7 @@ public class TutorialManager : MonoBehaviour
         if (panelCamara) panelCamara.SetActive(false);
         if (panelDiario) panelDiario.SetActive(false);
         if (panelUsoDiario) panelUsoDiario.SetActive(false);
+        if (panelCorrer) panelCorrer.SetActive(false);
         if (panelFinal) panelFinal.SetActive(false);
     }
 }
