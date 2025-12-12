@@ -7,7 +7,7 @@ public class VRPhotoCamera : MonoBehaviour
     [Header("Configuración General")]
     public float maxDistance = 100f;
     public LayerMask photographableLayer;
-    public float focusTimeRequired = 2.0f;
+    public float focusTimeRequired = 2.5f; // Ajustado a 2.5s como pediste
 
     [Header("UI Retícula")]
     public Image reticleUI;
@@ -19,11 +19,9 @@ public class VRPhotoCamera : MonoBehaviour
     public Image flashPanel;
     public AudioClip shutterSound;
 
-    // NUEVO: Control deslizante para la intensidad máxima (0 es invisible, 1 es sólido)
     [Range(0f, 1f)]
-    public float maxFlashAlpha = 0.65f; // Recomendado entre 0.4 y 0.7 para VR
+    public float maxFlashAlpha = 0.65f;
 
-    // NUEVO: Qué tan rápido desaparece el flash (número más alto = más rápido)
     public float flashFadeSpeed = 4.0f;
 
     private PhotographableObject currentTarget;
@@ -36,9 +34,7 @@ public class VRPhotoCamera : MonoBehaviour
 
         if (flashPanel != null)
         {
- 
             flashPanel.color = new Color(1f, 1f, 1f, 0f);
-
         }
     }
 
@@ -53,10 +49,23 @@ public class VRPhotoCamera : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, maxDistance, photographableLayer))
         {
-            PhotographableObject hitObject = hit.collider.GetComponent<PhotographableObject>();
+            // --- MEJORA IMPORTANTE ---
+            // Usamos GetComponentInParent. Esto permite que si el rayo choca con el modelo 3D de la carpa (hijo),
+            // encuentre el script PhotographableObject que está en el objeto padre.
+            PhotographableObject hitObject = hit.collider.GetComponentInParent<PhotographableObject>();
 
             if (hitObject != null && !hitObject.isPhotographed)
             {
+                // --- MEJORA VISUAL ---
+                // Si el checklist dice que ya completamos este grupo (ej: ya sacaste foto a un tigre),
+                // impedimos que el círculo se ponga amarillo con los otros tigres.
+                if (ChecklistManager.Instance.IsGroupComplete(hitObject.objectName))
+                {
+                    ResetFocus();
+                    return;
+                }
+
+                // Si es un objetivo nuevo, reiniciamos el cronómetro
                 if (hitObject != currentTarget)
                 {
                     currentTarget = hitObject;
@@ -65,6 +74,7 @@ public class VRPhotoCamera : MonoBehaviour
 
                 currentFocusTime += Time.deltaTime;
 
+                // Si pasaron los 2.5 segundos
                 if (currentFocusTime >= focusTimeRequired)
                 {
                     reticleUI.color = readyColor;
@@ -86,7 +96,7 @@ public class VRPhotoCamera : MonoBehaviour
         // Doble chequeo de seguridad
         if (currentTarget == null || currentTarget.isPhotographed) return;
 
-        // Comprobación final con el Manager (por si acaso el layer no se actualizó a tiempo en el frame anterior)
+        // Comprobación final con el Manager
         if (ChecklistManager.Instance.IsGroupComplete(currentTarget.objectName)) return;
 
         Debug.Log("¡FOTO TOMADA!");
@@ -96,7 +106,7 @@ public class VRPhotoCamera : MonoBehaviour
 
         currentTarget.OnPhotograph();
 
-        // Reseteamos el foco inmediatamente para evitar disparos múltiples accidentales en el mismo frame
+        // Reseteamos el foco inmediatamente
         ResetFocus();
     }
 
@@ -111,7 +121,6 @@ public class VRPhotoCamera : MonoBehaviour
     {
         if (flashPanel != null)
         {
-            // Detenemos cualquier flash anterior si estuviera ocurriendo
             StopCoroutine("FlashEffect");
             StartCoroutine("FlashEffect");
         }
@@ -127,26 +136,17 @@ public class VRPhotoCamera : MonoBehaviour
 
     IEnumerator FlashEffect()
     {
-        // 1. Configurar el color base (Blanco)
         Color flashColor = Color.white;
-
-        // 2. INICIO INSTANTÁNEO: Poner el Alpha al máximo configurado (ej: 0.6)
         flashColor.a = maxFlashAlpha;
         flashPanel.color = flashColor;
 
-        // 3. DESVANECIMIENTO GRADUAL (Loop)
-        // Mientras la transparencia sea mayor a 0...
         while (flashPanel.color.a > 0)
         {
-            // Restamos alpha basado en el tiempo y la velocidad
             flashColor.a -= Time.deltaTime * flashFadeSpeed;
             flashPanel.color = flashColor;
-
-            // Esperamos al siguiente frame
             yield return null;
         }
 
-        // 4. Asegurarnos de que quede totalmente invisible al final
         flashPanel.color = new Color(1f, 1f, 1f, 0f);
     }
 }

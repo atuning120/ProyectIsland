@@ -1,15 +1,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement; // Necesario para cargar escenas (V1)
 
 public class ChecklistManager : MonoBehaviour
 {
     public static ChecklistManager Instance { get; private set; }
+
+    // Diccionario para controlar qué animales ya fueron fotografiados
     public Dictionary<string, bool> photoChecklist = new Dictionary<string, bool>();
+
     public int photographedCount { get; private set; } = 0;
-    public int totalPhotosNeeded = 6; // Meta de fotos a conseguir
+    public int totalPhotosNeeded = 6; // Meta de fotos (V1)
+
+    // Evento para actualizar la UI general (ej: "3/6")
     public UnityEvent<int> OnPhotoCountChanged;
+
+    // Evento para avisar al Tutorial qué objeto específico se fotografió (V2)
+    public UnityEvent<string> OnSpecificPhotoTaken;
 
     private void Awake()
     {
@@ -21,8 +29,12 @@ public class ChecklistManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+
+            // Inicializamos eventos si están vacíos
             if (OnPhotoCountChanged == null) OnPhotoCountChanged = new UnityEvent<int>();
+            if (OnSpecificPhotoTaken == null) OnSpecificPhotoTaken = new UnityEvent<string>();
         }
+
         InitializeChecklist();
     }
 
@@ -45,24 +57,38 @@ public class ChecklistManager : MonoBehaviour
         return false;
     }
 
-    public void MarkAsPhotographed(string objectName)
+    /// <summary>
+    /// Marca un objeto como fotografiado.
+    /// </summary>
+    /// <param name="objectName">El nombre del animal (ej: "Tigre")</param>
+    /// <param name="debeSumar">Si es TRUE, aumenta el contador (1/6). Si es FALSE, solo marca el check (para tutoriales).</param>
+    public void MarkAsPhotographed(string objectName, bool debeSumar = true)
     {
         if (photoChecklist.ContainsKey(objectName) && !photoChecklist[objectName])
         {
+            // 1. Marcamos internamente que este grupo ya está listo
             photoChecklist[objectName] = true;
-            photographedCount++;
-            Debug.Log(objectName + " completado. Bloqueando fotos para este grupo...");
 
+            // 2. SOLO aumentamos el número si es un animal real (lógica de V2)
+            if (debeSumar)
+            {
+                photographedCount++;
+            }
+
+            Debug.Log(objectName + " completado. ¿Suma puntos?: " + debeSumar);
+
+            // 3. Avisamos a los eventos (UI y Tutorial)
             OnPhotoCountChanged?.Invoke(photographedCount);
+            OnSpecificPhotoTaken?.Invoke(objectName);
 
-            // --- AQUÍ ESTÁ LA MAGIA ---
-            // Buscamos TODOS los animales y desactivamos a los de este grupo
+            // 4. Desactivamos las físicas de todos los animales de ese tipo
             UpdateAllAnimalsPhysics(objectName, false);
 
             PrintChecklistStatus();
 
-            // Verificar si ya completamos todas las fotos
-            if (photographedCount >= totalPhotosNeeded)
+            // 5. Verificar condición de victoria (Lógica de V1)
+            // Solo ganamos si estamos sumando puntos y alcanzamos la meta
+            if (debeSumar && photographedCount >= totalPhotosNeeded)
             {
                 Debug.Log("¡Todas las fotos completadas! Cambiando a escena Descanso...");
                 SceneManager.LoadScene("Descanso");
@@ -93,18 +119,17 @@ public class ChecklistManager : MonoBehaviour
         PhotographableObject[] allObjects = FindObjectsOfType<PhotographableObject>();
         foreach (var obj in allObjects)
         {
-            // Si el animal se llama igual al que acabamos de fotografiar (ej: "Tigre")
             if (obj.objectName == targetName)
             {
-                // Le decimos que cambie su capa/tag
                 obj.SetPhotographableState(canPhotograph);
             }
         }
     }
+
     void PrintChecklistStatus()
     {
         Debug.Log("--- ESTADO DEL CHECKLIST ---");
-        Debug.Log("Total Fotografiado: " + photographedCount + "/" + photoChecklist.Count);
+        Debug.Log("Total Fotografiado: " + photographedCount + "/" + (totalPhotosNeeded > 0 ? totalPhotosNeeded.ToString() : photoChecklist.Count.ToString()));
         foreach (var item in photoChecklist)
         {
             Debug.Log(item.Key + ": " + (item.Value ? "Fotografiado" : "Pendiente"));

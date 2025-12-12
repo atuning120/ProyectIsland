@@ -1,4 +1,3 @@
-// UICounter.cs
 using UnityEngine;
 using TMPro; // Necesario para TextMeshPro
 
@@ -15,21 +14,24 @@ public class UICounter : MonoBehaviour
         if (ChecklistManager.Instance != null)
         {
             ChecklistManager.Instance.OnPhotoCountChanged.AddListener(UpdateCounterText);
-            // Actualizamos el texto inicial
+            // Actualizamos el texto inicial al arrancar
             UpdateCounterText(ChecklistManager.Instance.photographedCount);
         }
     }
 
-    // Esta funcin ser llamada automticamente por el evento
+    // Esta función será llamada automáticamente por el evento
     public void UpdateCounterText(int newCount)
     {
+        // Obtenemos el máximo desde el Manager. Si no existe el manager por error, usamos 6 por defecto.
         int max = ChecklistManager.Instance ? ChecklistManager.Instance.totalPhotosNeeded : 6;
-        counterText.text =  newCount + "/ " + max + " ";
+
+        // Formato: "1 / 6"
+        counterText.text = newCount + " / " + max;
     }
 
     private void OnDestroy()
     {
-        // Buena pr�ctica: desconectar el listener cuando el objeto se destruye
+        // Buena práctica: desconectar el listener cuando el objeto se destruye para evitar errores
         if (ChecklistManager.Instance != null)
         {
             ChecklistManager.Instance.OnPhotoCountChanged.RemoveListener(UpdateCounterText);

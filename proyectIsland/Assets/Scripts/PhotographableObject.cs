@@ -4,6 +4,8 @@ public class PhotographableObject : MonoBehaviour
 {
     public string objectName = "";
     public bool isPhotographed = false;
+    [Tooltip("Marca esto si es un animal. Desmárcalo si es la Carpa del tutorial.")]
+    public bool sumaPuntos = true;
 
     // Guardamos los valores originales para poder resetear el juego si hace falta
     private int originalLayer;
@@ -34,7 +36,7 @@ public class PhotographableObject : MonoBehaviour
         {
             isPhotographed = true;
             Debug.Log("¡Has fotografiado a: " + objectName + "!");
-            ChecklistManager.Instance.MarkAsPhotographed(objectName);
+            ChecklistManager.Instance.MarkAsPhotographed(objectName, sumaPuntos);
         }
     }
 
