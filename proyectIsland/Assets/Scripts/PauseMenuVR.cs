@@ -18,6 +18,10 @@ public class PauseMenuVR : MonoBehaviour
     [SerializeField] private AudioMixer audioMixer; // Opcional: si usas AudioMixer
     [Tooltip("Nombre del parámetro de volumen en el AudioMixer (ej: 'MasterVolume')")]
     [SerializeField] private string volumeParameter = "MasterVolume";
+    
+    [Header("Audio Control")]
+    [Tooltip("Arrastra aquí el AudioSource del Narrador o música de fondo para pausarlo")]
+    [SerializeField] private AudioSource mindfulnessAudioSource;
 
     [Header("XR Input Settings")]
     [Tooltip("Arrastra: XRI Default Input Actions.inputactions")]
@@ -210,11 +214,23 @@ public class PauseMenuVR : MonoBehaviour
             PausePhotographableObjects(true);
             ShowMainMenu(); 
             
+            // Pausar audio de mindfulness
+            if (mindfulnessAudioSource != null && mindfulnessAudioSource.isPlaying)
+            {
+                mindfulnessAudioSource.Pause();
+            }
+            
             Debug.Log("🎮 JUEGO PAUSADO - Objetos fotografiables congelados y muteados");
         }
         else
         {
             PausePhotographableObjects(false);
+
+            // Reanudar audio de mindfulness
+            if (mindfulnessAudioSource != null)
+            {
+                mindfulnessAudioSource.UnPause();
+            }
 
             Debug.Log("▶️ JUEGO REANUDADO - Objetos fotografiables activos con audio");
         }
