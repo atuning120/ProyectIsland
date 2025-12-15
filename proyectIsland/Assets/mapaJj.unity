@@ -2654,7 +2654,7 @@ MonoBehaviour:
   photographableLayer:
     serializedVersion: 2
     m_Bits: 8
-  focusTimeRequired: 2
+  focusTimeRequired: 1
   reticleUI: {fileID: 1751586498}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   focusColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}

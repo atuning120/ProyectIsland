@@ -475,8 +475,8 @@ Transform:
   m_GameObject: {fileID: 2629182449500102118}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.13993, z: -0.0019122}
+  m_LocalScale: {x: 1.4347591, y: 1.2854849, z: 1.0501}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7815340514337070011}
@@ -588,6 +588,8 @@ MonoBehaviour:
   animalCallFrequency: 0.15
   volumeRange: {x: 0.4, y: 0.7}
   pitchRange: {x: 0.9, y: 1.1}
+  minSoundDistance: 1
+  maxSoundDistance: 5
 --- !u!114 &-4517252459743440022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -602,6 +604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PhotographableObject
   objectName: Perro
   isPhotographed: 0
+  sumaPuntos: 1
 --- !u!1 &2735724662372591797
 GameObject:
   m_ObjectHideFlags: 0
