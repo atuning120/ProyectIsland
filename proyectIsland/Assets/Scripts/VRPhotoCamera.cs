@@ -4,24 +4,29 @@ using UnityEngine.UI;
 
 public class VRPhotoCamera : MonoBehaviour
 {
-    [Header("ConfiguraciÛn General")]
+    [Header("Configuraci√≥n General")]
     public float maxDistance = 100f;
-    public LayerMask photographableLayer;
-    public float focusTimeRequired = 2.5f; // Ajustado a 2.5s como pediste
 
-    [Header("UI RetÌcula")]
+    // NUEVO: Grosor del rayo (El "tubo" de detecci√≥n)
+    [Tooltip("El grosor del rayo. 0.05 es fino, 0.3 es grueso.")]
+    public float rayRadius = 0.2f;
+
+    [Tooltip("Ajuste de altura del rayo (local Y)")]
+    public float rayHeightOffset = 0f;
+
+    public LayerMask photographableLayer;
+    public float focusTimeRequired = 2.5f;
+
+    [Header("UI Ret√≠cula")]
     public Image reticleUI;
     public Color defaultColor = Color.white;
     public Color focusColor = Color.yellow;
     public Color readyColor = Color.green;
 
-    [Header("ConfiguraciÛn del Flash (Suavizado)")]
+    [Header("Configuraci√≥n del Flash")]
     public Image flashPanel;
     public AudioClip shutterSound;
-
-    [Range(0f, 1f)]
-    public float maxFlashAlpha = 0.65f;
-
+    [Range(0f, 1f)] public float maxFlashAlpha = 0.65f;
     public float flashFadeSpeed = 4.0f;
 
     private PhotographableObject currentTarget;
@@ -31,41 +36,35 @@ public class VRPhotoCamera : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-
-        if (flashPanel != null)
-        {
-            flashPanel.color = new Color(1f, 1f, 1f, 0f);
-        }
+        if (flashPanel != null) flashPanel.color = new Color(1f, 1f, 1f, 0f);
     }
 
     void Update()
     {
-        Debug.DrawRay(transform.position, transform.forward * maxDistance, Color.red);
         HandleAiming();
     }
 
     void HandleAiming()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, maxDistance, photographableLayer))
+        Vector3 rayOrigin = transform.position + (transform.up * rayHeightOffset);
+
+        // CAMBIO PRINCIPAL: Usamos SphereCast en lugar de Raycast
+        // Esto lanza una esfera hacia adelante, creando un cilindro de detecci√≥n
+        if (Physics.SphereCast(rayOrigin, rayRadius, transform.forward, out hit, maxDistance, photographableLayer))
         {
-            // --- MEJORA IMPORTANTE ---
-            // Usamos GetComponentInParent. Esto permite que si el rayo choca con el modelo 3D de la carpa (hijo),
-            // encuentre el script PhotographableObject que est· en el objeto padre.
+            // Buscamos el script en el objeto o en sus padres (para la Carpa)
             PhotographableObject hitObject = hit.collider.GetComponentInParent<PhotographableObject>();
 
             if (hitObject != null && !hitObject.isPhotographed)
             {
-                // --- MEJORA VISUAL ---
-                // Si el checklist dice que ya completamos este grupo (ej: ya sacaste foto a un tigre),
-                // impedimos que el cÌrculo se ponga amarillo con los otros tigres.
+                // Si el grupo ya est√° completo, ignoramos
                 if (ChecklistManager.Instance.IsGroupComplete(hitObject.objectName))
                 {
                     ResetFocus();
                     return;
                 }
 
-                // Si es un objetivo nuevo, reiniciamos el cronÛmetro
                 if (hitObject != currentTarget)
                 {
                     currentTarget = hitObject;
@@ -74,7 +73,6 @@ public class VRPhotoCamera : MonoBehaviour
 
                 currentFocusTime += Time.deltaTime;
 
-                // Si pasaron los 2.5 segundos
                 if (currentFocusTime >= focusTimeRequired)
                 {
                     reticleUI.color = readyColor;
@@ -93,20 +91,15 @@ public class VRPhotoCamera : MonoBehaviour
 
     void TakePhoto()
     {
-        // Doble chequeo de seguridad
         if (currentTarget == null || currentTarget.isPhotographed) return;
-
-        // ComprobaciÛn final con el Manager
         if (ChecklistManager.Instance.IsGroupComplete(currentTarget.objectName)) return;
 
-        Debug.Log("°FOTO TOMADA!");
+        Debug.Log("¬°FOTO TOMADA!");
 
         SimulateFlash();
         PlayShutterSound();
 
         currentTarget.OnPhotograph();
-
-        // Reseteamos el foco inmediatamente
         ResetFocus();
     }
 
@@ -128,10 +121,7 @@ public class VRPhotoCamera : MonoBehaviour
 
     void PlayShutterSound()
     {
-        if (audioSource != null && shutterSound != null)
-        {
-            audioSource.PlayOneShot(shutterSound);
-        }
+        if (audioSource != null && shutterSound != null) audioSource.PlayOneShot(shutterSound);
     }
 
     IEnumerator FlashEffect()
@@ -146,7 +136,24 @@ public class VRPhotoCamera : MonoBehaviour
             flashPanel.color = flashColor;
             yield return null;
         }
-
         flashPanel.color = new Color(1f, 1f, 1f, 0f);
+    }
+
+    // --- ESTO ES LO NUEVO PARA VER EL RAYO ---
+    // Esta funci√≥n dibuja l√≠neas en el editor para que veas qu√© est√° haciendo la c√°mara
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Vector3 rayOrigin = transform.position + (transform.up * rayHeightOffset);
+
+        // 1. Dibujamos una esfera en la c√°mara (el inicio del rayo)
+        Gizmos.DrawWireSphere(rayOrigin, rayRadius);
+
+        // 2. Dibujamos la l√≠nea central hasta donde llega
+        Gizmos.DrawRay(rayOrigin, transform.forward * maxDistance);
+
+        // 3. Dibujamos una esfera al final para ver el grosor all√° lejos
+        Vector3 endPosition = rayOrigin + (transform.forward * maxDistance);
+        Gizmos.DrawWireSphere(endPosition, rayRadius);
     }
 }
