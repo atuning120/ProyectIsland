@@ -370,7 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a949740ba15a93844b3550442174313f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  nombreEscenaJuego: mapaJj
+  nombreEscenaJuego: ADAN
   nombreEscenaRelajacion: Descanso
   botonComenzar: {fileID: 426677089}
   botonRelajacion: {fileID: 1692892041}
@@ -1627,6 +1627,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   maxDistance: 100
+  rayRadius: 0.2
+  rayHeightOffset: 0
   photographableLayer:
     serializedVersion: 2
     m_Bits: 8

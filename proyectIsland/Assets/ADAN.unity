@@ -258,8 +258,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 300, y: 100, z: 100}
-  m_Center: {x: -1.9546509, y: 1.2993813, z: -11.123657}
+  m_Size: {x: 300, y: 100, z: 251.86462}
+  m_Center: {x: -1.9546509, y: 1.2993813, z: -87.05597}
 --- !u!114 &14143563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,8 +290,8 @@ MonoBehaviour:
   pressDepth: 0.02
   releaseSpeed: 5
   normalColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  pressColor: {r: 0, g: 1, b: 0, a: 1}
+  hoverColor: {r: 0, g: 1, b: 0, a: 1}
+  pressColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &18789898
 GameObject:
   m_ObjectHideFlags: 0
@@ -2618,82 +2618,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15ca4494f24bf9741a48b37ec2c4c632, type: 3}
---- !u!1 &376972840
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 376972843}
-  - component: {fileID: 376972842}
-  - component: {fileID: 376972844}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &376972842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 376972840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventSystem
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &376972843
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 376972840}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &376972844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 376972840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab68ce6587aab0146b8dabefbd806791, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.UI.XRUIInputModule
-  m_SendPointerHoverToParent: 1
-  m_ClickSpeed: 0.3
-  m_MoveDeadzone: 0.6
-  m_RepeatDelay: 0.5
-  m_RepeatRate: 0.1
-  m_TrackedDeviceDragThresholdMultiplier: 1.4
-  m_MaxTrackedDeviceRaycastDistance: 1000
-  m_EnableXRInput: 1
-  m_EnableMouseInput: 1
-  m_EnableTouchInput: 1
-  m_EnableGamepadInput: 1
-  m_EnableJoystickInput: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
 --- !u!1001 &384366081
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3966,8 +3890,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 300, y: 100, z: 100}
-  m_Center: {x: 0, y: 0, z: -12.002563}
+  m_Size: {x: 300, y: 100, z: 251.42517}
+  m_Center: {x: 0, y: 0, z: -87.71515}
 --- !u!114 &540540709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3998,8 +3922,8 @@ MonoBehaviour:
   pressDepth: 0.02
   releaseSpeed: 5
   normalColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  pressColor: {r: 0, g: 1, b: 0, a: 1}
+  hoverColor: {r: 0, g: 1, b: 0, a: 1}
+  pressColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &546023309
 GameObject:
   m_ObjectHideFlags: 0
@@ -7936,8 +7860,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Por \xFAltimo para pausar el juego y abrir el men\xFA  de opciones debes
-    presionar la tecla 'X'.\n\nSelecciona con 'F' la opci\xF3n que desees."
+  m_text: "Por \xFAltimo para pausar el juego y abrir el men\xFA de opciones debes
+    presionar el bot\xF3n 'B' de la mano derecha.\r\n\r\nNavega en las opciones con
+    el bot\xF3n 'X' e 'Y' de la mano izquierda.\r\n\r\nSelecciona con 'B' la opci\xF3n
+    que desees.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -17510,7 +17436,6 @@ SceneRoots:
   - {fileID: 566655439}
   - {fileID: 1594511970}
   - {fileID: 237584662}
-  - {fileID: 376972843}
   - {fileID: 1162759293}
   - {fileID: 1249509794}
   - {fileID: 468393588}

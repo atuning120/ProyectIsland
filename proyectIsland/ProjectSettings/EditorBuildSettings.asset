@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 5c7c20d461194214b80beb753148753f
-  - enabled: 1
+  - enabled: 0
     path: Assets/mapaJj.unity
     guid: 39a0f99af41c02a40945899c904b61eb
   - enabled: 1
@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Samples/XR Interaction Toolkit/3.3.0/Starter Assets/DemoScene.unity
     guid: 319dafa5c80f29f428dc1e0d03f04177
+  - enabled: 1
+    path: Assets/ADAN.unity
+    guid: ce17f1285c9cf0749a7b06b98ca55e57
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 5632e0da197ce5f449fad3dad6fa0580, type: 2}
