@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\assets\\scripts\\tutorialmanager1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\tutorialmanager1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|c:\\users\\adan\\documents\\github\\proyectisland\\proyectisland\\assets\\scripts\\equipongrab.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\equipongrab.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\assets\\scripts\\vrphotocamera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\vrphotocamera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,15 +19,11 @@
       "RelativeMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\photographableobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\assets\\scripts\\tutorialmanager1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\tutorialmanager1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\assets\\scripts\\checklistmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\checklistmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|c:\\users\\adan\\documents\\github\\proyectisland\\proyectisland\\assets\\scripts\\uiconter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\assets\\scripts\\uiconter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\uiconter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -42,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 18,
+          "SelectedChildIndex": 17,
           "Children": [
             {
               "$type": "Bookmark",
@@ -106,7 +110,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
+              "Title": "EquipOnGrab.cs",
+              "DocumentMoniker": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\Assets\\Scripts\\EquipOnGrab.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\EquipOnGrab.cs",
+              "ToolTip": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\Assets\\Scripts\\EquipOnGrab.cs",
+              "RelativeToolTip": "Assets\\Scripts\\EquipOnGrab.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T23:13:59.53Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "UIConter.cs",
               "DocumentMoniker": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\Assets\\Scripts\\UIConter.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\UIConter.cs",
@@ -114,25 +131,24 @@
               "RelativeToolTip": "Assets\\Scripts\\UIConter.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-11T02:49:25.274Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-11T02:49:25.274Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "TutorialManager1.cs",
               "DocumentMoniker": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\Assets\\Scripts\\TutorialManager1.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\TutorialManager1.cs",
               "ToolTip": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\Assets\\Scripts\\TutorialManager1.cs",
               "RelativeToolTip": "Assets\\Scripts\\TutorialManager1.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAswEgAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAADMAAAAAAAAAAAAowAoAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-11T02:46:31.177Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "TutorialControlador.cs",
               "DocumentMoniker": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\Assets\\Scripts\\TutorialControlador.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\TutorialControlador.cs",
@@ -144,20 +160,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "VRPhotoCamera.cs",
               "DocumentMoniker": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\Assets\\Scripts\\VRPhotoCamera.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\VRPhotoCamera.cs",
               "ToolTip": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\Assets\\Scripts\\VRPhotoCamera.cs",
               "RelativeToolTip": "Assets\\Scripts\\VRPhotoCamera.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAI4AAAAAAAAAAAAQwJcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-08T18:57:52.395Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-08T18:57:52.395Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "DiarioToggle.cs",
               "DocumentMoniker": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\Assets\\Scripts\\DiarioToggle.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\DiarioToggle.cs",
@@ -169,7 +184,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "ChecklistManager.cs",
               "DocumentMoniker": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\Assets\\Scripts\\ChecklistManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\ChecklistManager.cs",
@@ -177,12 +192,11 @@
               "RelativeToolTip": "Assets\\Scripts\\ChecklistManager.cs",
               "ViewState": "AgIAACwAAAAAAAAAAAAIwAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-06T18:51:33.942Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-06T18:51:33.942Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "PhotographableObject.cs",
               "DocumentMoniker": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\Assets\\Scripts\\PhotographableObject.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PhotographableObject.cs",
@@ -190,12 +204,11 @@
               "RelativeToolTip": "Assets\\Scripts\\PhotographableObject.cs",
               "ViewState": "AgIAADIAAAAAAAAAAAAwwDwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-06T18:46:18.579Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-06T18:46:18.579Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "BK_Water.shader",
               "DocumentMoniker": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\Assets\\BK\\Pure_Common\\Shaders\\BK_Water.shader",
               "RelativeDocumentMoniker": "Assets\\BK\\Pure_Common\\Shaders\\BK_Water.shader",
