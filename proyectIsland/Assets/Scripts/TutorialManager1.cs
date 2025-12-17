@@ -7,6 +7,10 @@ public class TutorialManager : MonoBehaviour
     public XRGrabInteractable cameraGrab;
     public XRGrabInteractable diaryGrab;
 
+    // Referencia al script de la cámara para bloquearla
+    [Tooltip("Arrastra aquí el objeto que tiene el script VRPhotoCamera")]
+    public VRPhotoCamera photoCameraScript;
+
     [Header("Panel de Decisión Inicial")]
     public GameObject panelEleccion;
 
@@ -48,7 +52,11 @@ public class TutorialManager : MonoBehaviour
         if (contadorFotosUI != null) contadorFotosUI.SetActive(false);
         if (iconoCamaraUI != null) iconoCamaraUI.SetActive(false);
 
+        // Bloquear agarre del diario
         if (diaryGrab != null) diaryGrab.enabled = false;
+
+        // Bloquear funcionalidad de la cámara
+        if (photoCameraScript != null) photoCameraScript.enabled = false;
 
         CancelInvoke();
     }
@@ -61,10 +69,13 @@ public class TutorialManager : MonoBehaviour
     {
         if (panelEleccion != null) panelEleccion.SetActive(false);
 
+        // Aseguramos que la cámara siga bloqueada al iniciar el tutorial
+        if (photoCameraScript != null) photoCameraScript.enabled = false;
+
         // Paso 1: Bienvenida
         if (panelBienvenida != null) panelBienvenida.SetActive(true);
 
-        // A los 5 segundos cambiamos a Movimiento, pero Bienvenida se queda hasta entonces
+        // CAMBIO AQUÍ: Cambiado de 15.0f a 5.0f solo para la bienvenida
         Invoke("MostrarPanelMovimiento", 5.0f);
 
         Debug.Log("Iniciando Tutorial...");
@@ -79,6 +90,9 @@ public class TutorialManager : MonoBehaviour
 
         if (diaryGrab != null) diaryGrab.enabled = true;
 
+        // Si salta el tutorial, activamos la cámara inmediatamente
+        if (photoCameraScript != null) photoCameraScript.enabled = true;
+
         pasoActual = 99;
         Debug.Log("Tutorial Saltado.");
     }
@@ -89,11 +103,9 @@ public class TutorialManager : MonoBehaviour
 
     void MostrarPanelMovimiento()
     {
-        OcultarTodosPaneles(); // Se va Bienvenida
+        OcultarTodosPaneles();
         if (panelMovimiento != null) panelMovimiento.SetActive(true);
-
-        // NOTA: Ya no hay Invoke para ocultarlo. 
-        // Se quedará activo hasta que el jugador agarre la cámara.
+        // Este panel NO tiene tiempo, espera a que el usuario agarre la cámara
     }
 
     public void JugadorTomoCamara()
@@ -101,13 +113,16 @@ public class TutorialManager : MonoBehaviour
         if (pasoActual == 0)
         {
             pasoActual = 1;
-            OcultarTodosPaneles(); // Se va Movimiento
+            OcultarTodosPaneles();
 
             if (panelCamara != null) panelCamara.SetActive(true);
             if (iconoCamaraUI != null) iconoCamaraUI.SetActive(true);
 
-            // El panel de "Toma foto" se queda activo hasta que saque la foto
-            Debug.Log("Tutorial: Cámara tomada.");
+            // Activamos la cámara para que pueda sacar fotos
+            if (photoCameraScript != null) photoCameraScript.enabled = true;
+
+            Debug.Log("Tutorial: Cámara tomada y ACTIVADA.");
+            // Este panel NO tiene tiempo, espera a que el usuario saque la foto
         }
     }
 
@@ -116,13 +131,13 @@ public class TutorialManager : MonoBehaviour
         if (pasoActual == 1 && nombreObjeto == "Carpa")
         {
             pasoActual = 2;
-            OcultarTodosPaneles(); // Se va Panel Cámara
+            OcultarTodosPaneles();
 
             if (panelDiario != null) panelDiario.SetActive(true);
             if (diaryGrab != null) diaryGrab.enabled = true;
 
-            // El panel "Toma Diario" se queda activo hasta que agarre el diario
             Debug.Log("Tutorial: Foto correcta.");
+            // Este panel NO tiene tiempo, espera a que el usuario agarre el diario
         }
     }
 
@@ -131,41 +146,41 @@ public class TutorialManager : MonoBehaviour
         if (pasoActual == 2)
         {
             pasoActual = 3;
-            OcultarTodosPaneles(); // Se va Panel Diario
+            OcultarTodosPaneles();
 
             if (panelUsoDiario != null) panelUsoDiario.SetActive(true);
 
-            // Como aquí no hay sensor, damos TIEMPO EXTRA (8 seg) para que lea cómo usarlo
-            Invoke("MostrarPanelCorrer", 8.0f);
+            // Mantenemos 15 segundos para leer sobre el uso del diario
+            Invoke("MostrarPanelCorrer", 15.0f);
         }
     }
 
     void MostrarPanelCorrer()
     {
-        OcultarTodosPaneles(); // Se va Uso Diario
+        OcultarTodosPaneles();
         if (panelCorrer != null) panelCorrer.SetActive(true);
 
-        // Damos 7 segundos para leer sobre correr
-        Invoke("MostrarPanelAbrirMenu", 7.0f);
+        // Mantenemos 15 segundos para leer sobre correr
+        Invoke("MostrarPanelAbrirMenu", 15.0f);
     }
 
     void MostrarPanelAbrirMenu()
     {
-        OcultarTodosPaneles(); // Se va Correr
+        OcultarTodosPaneles();
         if (panelAbrirMenu != null) panelAbrirMenu.SetActive(true);
 
-        // Damos 7 segundos para leer sobre el menú
-        Invoke("MostrarObjetivoFinal", 7.0f);
+        // Mantenemos 15 segundos para leer sobre el menú
+        Invoke("MostrarObjetivoFinal", 15.0f);
     }
 
     void MostrarObjetivoFinal()
     {
-        OcultarTodosPaneles(); // Se va Menú
+        OcultarTodosPaneles();
         if (panelFinal != null) panelFinal.SetActive(true);
         if (contadorFotosUI != null) contadorFotosUI.SetActive(true);
 
-        // SOLICITUD: El final dura 10 segundos
-        Invoke("OcultarTodoFinal", 10.0f);
+        // Mantenemos 15 segundos para el mensaje final
+        Invoke("OcultarTodoFinal", 15.0f);
     }
 
     void OcultarTodoFinal()

@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|c:\\users\\adan\\documents\\github\\proyectisland\\proyectisland\\assets\\scripts\\vrbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\vrbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|c:\\users\\adan\\documents\\github\\proyectisland\\proyectisland\\assets\\scripts\\tutorialmanager1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\assets\\scripts\\tutorialmanager1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\tutorialmanager1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\assets\\scripts\\equipongrab.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\equipongrab.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\assets\\scripts\\vrphotocamera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\vrphotocamera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|c:\\users\\adan\\documents\\github\\proyectisland\\proyectisland\\assets\\scripts\\vrbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\vrbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\assets\\scripts\\equipongrab.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\equipongrab.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8F04B77C-AC5F-2FA5-A8B2-7B0D49470B61}|Assembly-CSharp.csproj|C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\assets\\scripts\\photographableobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -50,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 15,
+          "SelectedChildIndex": 18,
           "Children": [
             {
               "$type": "Bookmark",
@@ -114,20 +114,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "VRButton.cs",
               "DocumentMoniker": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\Assets\\Scripts\\VRButton.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\VRButton.cs",
               "ToolTip": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\Assets\\Scripts\\VRButton.cs",
               "RelativeToolTip": "Assets\\Scripts\\VRButton.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAcwG0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-17T17:47:27.009Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "EquipOnGrab.cs",
               "DocumentMoniker": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\Assets\\Scripts\\EquipOnGrab.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\EquipOnGrab.cs",
@@ -151,13 +151,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "TutorialManager1.cs",
               "DocumentMoniker": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\Assets\\Scripts\\TutorialManager1.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\TutorialManager1.cs",
               "ToolTip": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\Assets\\Scripts\\TutorialManager1.cs",
               "RelativeToolTip": "Assets\\Scripts\\TutorialManager1.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAowAoAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAALoAAAAAAAAAAAAIwMUAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-11T02:46:31.177Z",
               "EditorCaption": ""
@@ -176,15 +176,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "VRPhotoCamera.cs",
               "DocumentMoniker": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\Assets\\Scripts\\VRPhotoCamera.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\VRPhotoCamera.cs",
               "ToolTip": "C:\\Users\\Adan\\Documents\\GitHub\\ProyectIsland\\proyectIsland\\Assets\\Scripts\\VRPhotoCamera.cs",
               "RelativeToolTip": "Assets\\Scripts\\VRPhotoCamera.cs",
-              "ViewState": "AgIAAI4AAAAAAAAAAAAQwJcAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAI4AAAAAAAAAAAAQwJ4AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-08T18:57:52.395Z"
+              "WhenOpened": "2025-12-08T18:57:52.395Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
